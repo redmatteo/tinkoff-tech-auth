@@ -8,4 +8,7 @@ target 'Tinkoff Tech Authentificator' do
   pod 'R.swift'
   pod 'SwiftLint'
 
+  pod 'AuthManager', :path => 'LocalPods/AuthManager'
+  pod 'AuthLoginScreen', :path => 'LocalPods/AuthLoginScreen'
+  pod 'AuthPinScreen', :path => 'LocalPods/AuthPinScreen'
 end
