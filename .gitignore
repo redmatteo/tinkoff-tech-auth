@@ -80,3 +80,6 @@ fastlane/test_output
 
 iOSInjectionProject/
 .idea
+*.xcworkspacedata/
+Tinkoff Tech Authentificator.xcworkspace/contents.xcworkspacedata
+Tinkoff Tech Authentificator.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
