@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import AuthManager
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        AuthManager.authentificate()
         // Do any additional setup after loading the view.
     }
 
