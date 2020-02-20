@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ContentController.swift
 //  Tinkoff Tech Authentificator
 //
 //  Created by Mikhail on 19.02.2020.
@@ -9,7 +9,7 @@
 import UIKit
 import AuthManager
 
-class ViewController: UIViewController {
+class ContentController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

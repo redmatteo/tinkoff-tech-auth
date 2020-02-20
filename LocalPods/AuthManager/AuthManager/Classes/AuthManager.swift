@@ -11,4 +11,16 @@ public class AuthManager {
     public static func authentificate() {
         print("Hello World")
     }
+    
+    public enum State {
+        case credentials, setPin, confirmPin
+    }
+    
+    public init() {
+        
+    }
+    
+    public func authentificate(_ completion: (_ state: State) -> Void) {
+        
+    }
 }
