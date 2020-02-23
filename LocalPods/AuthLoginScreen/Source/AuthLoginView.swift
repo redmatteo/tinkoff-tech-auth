@@ -38,6 +38,7 @@ class AuthLoginView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        configureUI()
         setupLayout()
     }
     
@@ -46,6 +47,10 @@ class AuthLoginView: UIView {
     }
     
     // MARK: - Configure
+    
+    private func configureUI() {
+        self.backgroundColor = .white
+    }
     
     private func setupLayout() {
         self.addSubview(loginField)
@@ -58,10 +63,10 @@ class AuthLoginView: UIView {
         let padding: CGFloat = 20.0
         let safeArea = self.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            self.loginField.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: padding),
+            self.loginField.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: padding + 100),
             self.loginField.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
             
-            self.passwordField.topAnchor.constraint(equalTo: self.loginField.topAnchor, constant: padding),
+            self.passwordField.topAnchor.constraint(equalTo: self.loginField.bottomAnchor, constant: padding),
             self.passwordField.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
             
             self.loginButton.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -padding),

@@ -7,6 +7,7 @@
 
 import Foundation
 
+@available(iOS 11.0, *)
 public class AuthLoginModuleBuilder {
     
     public static func build() -> AuthLoginViewController {
