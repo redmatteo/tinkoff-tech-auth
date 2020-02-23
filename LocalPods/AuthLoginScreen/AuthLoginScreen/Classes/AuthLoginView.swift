@@ -10,6 +10,15 @@ class AuthLoginView: UIView {
     
     // MARK: - Subviews
     
+    private(set) lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.boldSystemFont(ofSize: 30)
+        label.text = "Авторизуйтесь"
+        label.numberOfLines = 0
+        return label
+    }()
+    
     private(set) lazy var loginField: UITextField = {
         let field = UITextField()
         field.translatesAutoresizingMaskIntoConstraints = false
@@ -31,8 +40,10 @@ class AuthLoginView: UIView {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Войти", for: .normal)
-        button.backgroundColor = .systemYellow
         button.setTitleColor(.black, for: .normal)
+        button.layer.cornerRadius = 15
+        button.setBackgroundColor(color: .systemYellow, forState: .normal)
+        button.setBackgroundColor(color: .lightGray, forState: .disabled)
         return button
     }()
     
@@ -40,6 +51,10 @@ class AuthLoginView: UIView {
         let checkbox = Checkbox()
         checkbox.translatesAutoresizingMaskIntoConstraints = false
         checkbox.checkmarkStyle = .tick
+        checkbox.checkedBorderColor = .systemYellow
+        checkbox.borderCornerRadius = 7
+        checkbox.uncheckedBorderColor = .lightGray
+        checkbox.checkmarkColor = .systemYellow
         return checkbox
     }()
     
@@ -69,6 +84,7 @@ class AuthLoginView: UIView {
     }
     
     private func setupLayout() {
+        self.addSubview(titleLabel)
         self.addSubview(loginField)
         self.addSubview(passwordField)
         self.addSubview(loginButton)
@@ -78,17 +94,22 @@ class AuthLoginView: UIView {
     }
     
     private func setupConstraints() {
-        let topPadding: CGFloat = 100.0
-        let padding: CGFloat = 40.0
+        let padding: CGFloat = 20.0
         let safeArea = self.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            self.loginField.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: padding + topPadding),
+            self.titleLabel.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: padding),
+            self.titleLabel.leftAnchor.constraint(equalTo: safeArea.leftAnchor, constant: padding),
+            self.titleLabel.rightAnchor.constraint(equalTo: safeArea.rightAnchor, constant: padding * 2),
+            
+            self.loginField.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: padding),
             self.loginField.leftAnchor.constraint(equalTo: safeArea.leftAnchor, constant: padding),
             self.loginField.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
+            self.loginField.heightAnchor.constraint(equalToConstant: 50),
             
             self.passwordField.topAnchor.constraint(equalTo: self.loginField.bottomAnchor, constant: padding),
             self.passwordField.leftAnchor.constraint(equalTo: safeArea.leftAnchor, constant: padding),
             self.passwordField.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
+            self.passwordField.heightAnchor.constraint(equalToConstant: 50),
             
             self.isSetPinCheckbox.topAnchor.constraint(equalTo: self.passwordField.bottomAnchor, constant: padding),
             self.isSetPinCheckbox.leftAnchor.constraint(equalTo: safeArea.leftAnchor, constant: padding),
@@ -99,8 +120,10 @@ class AuthLoginView: UIView {
             self.isSetPinLabel.leftAnchor.constraint(equalTo: self.isSetPinCheckbox.rightAnchor, constant: 10),
             self.isSetPinLabel.rightAnchor.constraint(equalTo: safeArea.rightAnchor, constant: -padding),
             
-            self.loginButton.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -padding),
-            self.loginButton.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor)
+            self.loginButton.topAnchor.constraint(equalTo: self.isSetPinCheckbox.bottomAnchor, constant: padding),
+            self.loginButton.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
+            self.loginButton.leftAnchor.constraint(equalTo: safeArea.leftAnchor, constant: padding),
+            self.loginButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
     
