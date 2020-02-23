@@ -64,9 +64,11 @@ class AuthLoginView: UIView {
         let safeArea = self.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
             self.loginField.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: padding + 100),
+            self.loginField.leftAnchor.constraint(equalTo: safeArea.leftAnchor, constant: padding),
             self.loginField.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
             
             self.passwordField.topAnchor.constraint(equalTo: self.loginField.bottomAnchor, constant: padding),
+            self.passwordField.leftAnchor.constraint(equalTo: safeArea.leftAnchor, constant: padding),
             self.passwordField.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
             
             self.loginButton.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -padding),
