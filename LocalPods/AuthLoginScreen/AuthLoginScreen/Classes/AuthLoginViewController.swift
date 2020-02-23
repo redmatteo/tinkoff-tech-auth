@@ -5,6 +5,10 @@
 //  Created by Artem Kufaev on 23.02.2020.
 //
 
+import RxSwift
+import RxCocoa
+import Validator
+
 public protocol AuthLoginViewControllerDelegate: class {
     func loginDidChange(_ login: String)
     func passwordDidChange(_ password: String)
@@ -29,6 +33,22 @@ public class AuthLoginViewController: UIViewController {
         view.passwordField.delegate = self
         view.loginButton.addTarget(self, action: #selector(loginButtonDidClicked), for: .touchUpInside)
         self.view = view
+    }
+    
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+        activateValidator()
+    }
+    
+    private func activateValidator() {
+        let view = self.loginView
+        _ = Observable.combineLatest(view.loginField.rx.text, view.passwordField.rx.text)
+            .map { login, password in
+                return (login ?? "").validate(rules: AuthLoginValidator.loginValidateRules).isValid &&
+                    (password ?? "").validate(rules: AuthLoginValidator.passwordValidateRules).isValid
+        }.bind { isValid in
+            view.loginButton.isEnabled = isValid
+        }
     }
     
 }

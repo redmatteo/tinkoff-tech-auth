@@ -1,13 +1,21 @@
 PODS:
   - AuthLoginScreen (0.1.0):
+    - RxCocoa
     - RxSwift
+    - Validator
   - AuthManager (0.1.0)
   - AuthPinScreen (0.1.0)
   - R.swift (5.1.0):
     - R.swift.Library (~> 5.1.0)
   - R.swift.Library (5.1.0)
+  - RxCocoa (5.0.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.0.1):
+    - RxSwift (~> 5)
   - RxSwift (5.0.1)
   - SwiftLint (0.38.2)
+  - Validator (3.2.1)
 
 DEPENDENCIES:
   - AuthLoginScreen (from `LocalPods/AuthLoginScreen`)
@@ -20,8 +28,11 @@ SPEC REPOS:
   trunk:
     - R.swift
     - R.swift.Library
+    - RxCocoa
+    - RxRelay
     - RxSwift
     - SwiftLint
+    - Validator
 
 EXTERNAL SOURCES:
   AuthLoginScreen:
@@ -32,13 +43,16 @@ EXTERNAL SOURCES:
     :path: LocalPods/AuthPinScreen
 
 SPEC CHECKSUMS:
-  AuthLoginScreen: 64c972d028fbffa5088c12f6e3ff89f5b0ef4923
+  AuthLoginScreen: c35e8e891bf9fc9fbbecc564ac859f86d22d150f
   AuthManager: 6982d3ccd15f8767ca1230bec0fcf86961250330
   AuthPinScreen: aaa252f425aa924b6b5d1f0f233bd21a109b0c9d
   R.swift: 8cbc4fc69b740305b6a17c8a8ed968eb788962d9
   R.swift.Library: fa85ce1e0d0b7e818cd9e080df910ba54d2776cc
+  RxCocoa: e741b9749968e8a143e2b787f1dfbff2b63d0a5c
+  RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
   RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
   SwiftLint: 8f5d2f903e1c9bcbc832fd16771e80a263ac6cbb
+  Validator: 80a6f567220c962dfd2d9928ae98a8c1d164f6f4
 
 PODFILE CHECKSUM: 560a51ff25e592b5698442b8d77606a870228559
 
