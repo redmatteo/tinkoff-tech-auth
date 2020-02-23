@@ -43,7 +43,7 @@ EXTERNAL SOURCES:
     :path: LocalPods/AuthPinScreen
 
 SPEC CHECKSUMS:
-  AuthLoginScreen: c35e8e891bf9fc9fbbecc564ac859f86d22d150f
+  AuthLoginScreen: 9f1b6ab2e2b9305458e0bcc2979c0b0843e1832d
   AuthManager: 6982d3ccd15f8767ca1230bec0fcf86961250330
   AuthPinScreen: aaa252f425aa924b6b5d1f0f233bd21a109b0c9d
   R.swift: 8cbc4fc69b740305b6a17c8a8ed968eb788962d9

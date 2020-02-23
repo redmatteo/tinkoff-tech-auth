@@ -12,7 +12,8 @@ import Validator
 public protocol AuthLoginViewControllerDelegate: class {
     func loginDidChange(_ login: String)
     func passwordDidChange(_ password: String)
-    func loginButtonDidClicked()
+    func isSetPinDidChange(_ isSetPin: Bool)
+    func loginButtonDidClicked(login: String, password: String, isSetPin: Bool)
 }
 
 @available(iOS 11.0, *)
@@ -29,8 +30,6 @@ public class AuthLoginViewController: UIViewController {
     public override func loadView() {
         super.loadView()
         let view = AuthLoginView()
-        view.loginField.delegate = self
-        view.passwordField.delegate = self
         view.loginButton.addTarget(self, action: #selector(loginButtonDidClicked), for: .touchUpInside)
         self.view = view
     }
@@ -38,6 +37,31 @@ public class AuthLoginViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         activateValidator()
+        setBindings()
+    }
+    
+    private func setBindings() {
+        _ = self.loginView.loginField.rx.text.bind { login in
+            self.delegate?.loginDidChange(login ?? "")
+        }
+        _ = self.loginView.passwordField.rx.text.bind { password in
+            self.delegate?.passwordDidChange(password ?? "")
+        }
+        _ = self.loginView.isSetPinCheckbox.rx.controlProperty(
+            editingEvents: .valueChanged,
+            getter: { (checkbox) -> Bool in
+            return checkbox.isChecked
+        }) { _,_ in }.bind { isChecked in
+            self.delegate?.isSetPinDidChange(isChecked)
+        }
+    }
+    
+    @objc
+    func loginButtonDidClicked() {
+        let login = self.loginView.loginField.text ?? ""
+        let password = self.loginView.passwordField.text ?? ""
+        let isSetPin = self.loginView.isSetPinCheckbox.isChecked
+        self.delegate?.loginButtonDidClicked(login: login, password: password, isSetPin: isSetPin)
     }
     
     private func activateValidator() {
@@ -49,28 +73,6 @@ public class AuthLoginViewController: UIViewController {
         }.bind { isValid in
             view.loginButton.isEnabled = isValid
         }
-    }
-    
-}
-
-@available(iOS 11.0, *)
-extension AuthLoginViewController: UITextFieldDelegate {
-    
-    public func textFieldDidChangeSelection(_ textField: UITextField) {
-        guard let text = textField.text,
-            let delegate = self.delegate else { return }
-        switch textField {
-        case let field where field == self.loginView.loginField:
-            delegate.loginDidChange(text)
-        case let field where field == self.loginView.passwordField:
-            delegate.passwordDidChange(text)
-        default: break
-        }
-    }
-    
-    @objc
-    func loginButtonDidClicked() {
-        self.delegate?.loginButtonDidClicked()
     }
     
 }
