@@ -7,18 +7,17 @@
 //
 
 import UIKit
+import AuthPinScreen
 
-class ViewController: UIViewController {
+class ViewController: AuthPinController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        if let authPinController = createAuthPinController() {
+            navigationController?.pushViewController(authPinController, animated: true)
+        }
+        
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+    
 }
 
