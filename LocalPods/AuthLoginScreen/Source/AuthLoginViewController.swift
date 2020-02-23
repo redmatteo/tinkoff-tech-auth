@@ -5,6 +5,12 @@
 //  Created by Artem Kufaev on 23.02.2020.
 //
 
+public protocol AuthLoginViewControllerDelegate: class {
+    func loginDidChange(_ login: String)
+    func passwordDidChange(_ password: String)
+    func loginButtonDidClicked()
+}
+
 public class AuthLoginViewController: UIViewController {
     
     var presenter: AuthLoginPresenter!
