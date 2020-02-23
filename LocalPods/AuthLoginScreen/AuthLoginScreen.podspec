@@ -24,19 +24,19 @@ TODO: Add long description of the pod here.
   s.homepage         = 'https://github.com/mikhail/AuthLoginScreen'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'mikhail' => 'iosmishka@gmail.com' }
+  s.author           = { 'nelmeris' => 'kufaevartem@icloud.com' }
   s.source           = { :git => 'https://github.com/mikhail/AuthLoginScreen.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
 
   s.source_files = 'AuthLoginScreen/Classes/**/*'
-  
+
   # s.resource_bundles = {
   #   'AuthLoginScreen' => ['AuthLoginScreen/Assets/*.png']
   # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.frameworks = 'UIKit'
+  s.dependency 'RxSwift'
 end
