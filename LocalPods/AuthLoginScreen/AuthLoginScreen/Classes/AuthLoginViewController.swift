@@ -16,7 +16,7 @@ public protocol AuthLoginViewControllerDelegate: class {
 @available(iOS 11.0, *)
 open class AuthLoginViewController: LoadingViewController {
     
-    public var delegate: AuthLoginViewControllerDelegate?
+    public weak var delegate: AuthLoginViewControllerDelegate?
     
     public var loginView: AuthLoginView {
         guard let view = self.view as? AuthLoginView else { fatalError() }
