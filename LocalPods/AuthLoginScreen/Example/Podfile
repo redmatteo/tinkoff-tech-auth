@@ -2,7 +2,6 @@ use_frameworks!
 
 target 'AuthLoginScreen_Example' do
   pod 'AuthLoginScreen', :path => '../'
-  pod 'RxSwift'
 
   target 'AuthLoginScreen_Tests' do
     inherit! :search_paths
