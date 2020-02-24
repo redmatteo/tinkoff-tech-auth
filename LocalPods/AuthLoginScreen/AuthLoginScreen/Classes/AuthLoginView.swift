@@ -6,7 +6,7 @@
 //
 
 @available(iOS 11.0, *)
-class AuthLoginView: UIView {
+public class AuthLoginView: UIView {
     
     // MARK: - Subviews
     

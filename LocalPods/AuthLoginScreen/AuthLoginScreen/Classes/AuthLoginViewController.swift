@@ -14,20 +14,19 @@ public protocol AuthLoginViewControllerDelegate: class {
 }
 
 @available(iOS 11.0, *)
-public class AuthLoginViewController: UIViewController {
+public class AuthLoginViewController: LoadingViewController {
     
     public var delegate: AuthLoginViewControllerDelegate?
     
-    var loginView: AuthLoginView {
+    public var loginView: AuthLoginView {
         guard let view = self.view as? AuthLoginView else { fatalError() }
         return view
     }
     
     public override func loadView() {
         super.loadView()
-        let view = AuthLoginView()
-        view.loginButton.addTarget(self, action: #selector(loginButtonDidClicked), for: .touchUpInside)
-        self.view = view
+        self.view = AuthLoginView()
+        self.loginView.loginButton.addTarget(self, action: #selector(loginButtonDidClicked), for: .touchUpInside)
     }
     
     public override func viewDidLoad() {
