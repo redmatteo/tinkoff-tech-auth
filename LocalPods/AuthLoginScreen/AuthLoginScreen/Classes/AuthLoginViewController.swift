@@ -14,7 +14,7 @@ public protocol AuthLoginViewControllerDelegate: class {
 }
 
 @available(iOS 11.0, *)
-public class AuthLoginViewController: LoadingViewController {
+open class AuthLoginViewController: LoadingViewController {
     
     public var delegate: AuthLoginViewControllerDelegate?
     
@@ -29,7 +29,7 @@ public class AuthLoginViewController: LoadingViewController {
         self.loginView.loginButton.addTarget(self, action: #selector(loginButtonDidClicked), for: .touchUpInside)
     }
     
-    public override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
         activateValidator()
     }

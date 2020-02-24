@@ -8,7 +8,7 @@
 import Foundation
 
 @available(iOS 11.0, *)
-public class LoadingViewController: UIViewController {
+open class LoadingViewController: UIViewController {
     
     private(set) lazy var loadingView: LoadingView = {
         let view = LoadingView()
