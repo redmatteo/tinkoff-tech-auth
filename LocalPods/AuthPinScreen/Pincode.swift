@@ -31,14 +31,18 @@ class Pincode {
             return
         }
         code.append(contentsOf: text)
-        print("Insert PIN = \(code)")
     }
     
     func removeText() {
         if hasText {
             code.removeLast()
         }
-        print("Remove PIN = \(code)")
+    }
+    
+    func removeAllText() {
+        if hasText {
+            code.removeAll()
+        }
     }
     
     func isCodeFill() -> Bool {
@@ -53,7 +57,7 @@ class Pincode {
         return .systemYellow
     }
     
-    func updateStack(by code: String) -> [UIColor] {
+    private func updateStack(by code: String) -> [UIColor] {
         var emptyDotsColors: [UIColor] = Array(0..<maxLength).map { _ in emptyDot()}
         let userPinLength = code.count
         let fillDotsColors: [UIColor] = Array(0..<userPinLength).map { _ in fillDot()}
