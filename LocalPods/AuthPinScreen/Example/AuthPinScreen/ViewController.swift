@@ -13,10 +13,15 @@ class ViewController: AuthPinController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let authPinController = createAuthPinController() {
+        setupAuthPinController(with: .confirmPin)
+    }
+    
+    func setupAuthPinController(with state: AuthPinState) {
+        let authPinBundle = Bundle(for: AuthPinController.self)
+        if let authPinController = authPinBundle.loadNibNamed("AuthPinController", owner: self, options: nil)?.first as? AuthPinController {
+            authPinController.state = state
             navigationController?.pushViewController(authPinController, animated: true)
         }
-        
     }
     
 }
