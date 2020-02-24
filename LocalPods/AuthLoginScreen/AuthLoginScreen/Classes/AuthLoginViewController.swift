@@ -34,10 +34,16 @@ open class AuthLoginViewController: LoadingViewController {
     open override func viewDidLoad() {
         super.viewDidLoad()
         activateValidator()
+        setHideKeyboardOnTap()
+    }
+    
+    private func setHideKeyboardOnTap() {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        self.view.addGestureRecognizer(tap)
     }
     
     @objc
-    func loginButtonDidClicked() {
+    private func loginButtonDidClicked() {
         let login = self.loginView.loginField.text ?? ""
         let password = self.loginView.passwordField.text ?? ""
         let isSetPin = self.loginView.isSetPinCheckbox.isChecked
