@@ -27,6 +27,8 @@ open class AuthLoginViewController: LoadingViewController {
         super.loadView()
         self.view = AuthLoginView()
         self.loginView.loginButton.addTarget(self, action: #selector(loginButtonDidClicked), for: .touchUpInside)
+        self.loginView.loginField.delegate = self
+        self.loginView.passwordField.delegate = self
     }
     
     open override func viewDidLoad() {
@@ -51,6 +53,21 @@ open class AuthLoginViewController: LoadingViewController {
         }.bind { isValid in
             view.loginButton.isEnabled = isValid
         }
+    }
+    
+}
+
+@available(iOS 11.0, *)
+extension AuthLoginViewController: UITextFieldDelegate {
+    
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let nextTag: NSInteger = textField.tag + 1
+        if let nextResponder = self.loginView.viewWithTag(nextTag) {
+            nextResponder.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+        return true
     }
     
 }

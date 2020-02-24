@@ -24,6 +24,8 @@ public class AuthLoginView: UIView {
         field.translatesAutoresizingMaskIntoConstraints = false
         field.placeholder = "Login"
         field.textContentType = .username
+        field.tag = 0
+        field.returnKeyType = .next
         return field
     }()
     
@@ -33,6 +35,8 @@ public class AuthLoginView: UIView {
         field.placeholder = "Password"
         field.isSecureTextEntry = true
         field.textContentType = .password
+        field.tag = 1
+        field.returnKeyType = .done
         return field
     }()
     
