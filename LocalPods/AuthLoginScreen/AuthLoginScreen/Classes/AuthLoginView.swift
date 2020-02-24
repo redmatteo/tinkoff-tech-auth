@@ -55,6 +55,7 @@ class AuthLoginView: UIView {
         checkbox.borderCornerRadius = 7
         checkbox.uncheckedBorderColor = .lightGray
         checkbox.checkmarkColor = .systemYellow
+        checkbox.useHapticFeedback = false
         return checkbox
     }()
     
@@ -62,6 +63,9 @@ class AuthLoginView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Задать PIN"
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(isSetPinLabelTapped))
+        label.isUserInteractionEnabled = true
+        label.addGestureRecognizer(gestureRecognizer)
         return label
     }()
     
@@ -69,12 +73,18 @@ class AuthLoginView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configureUI()
         setupLayout()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Actions
+    
+    @objc
+    private func isSetPinLabelTapped() {
+        isSetPinCheckbox.isChecked = !isSetPinCheckbox.isChecked
     }
     
     // MARK: - Configure
@@ -90,6 +100,7 @@ class AuthLoginView: UIView {
         self.addSubview(loginButton)
         self.addSubview(isSetPinCheckbox)
         self.addSubview(isSetPinLabel)
+        configureUI()
         setupConstraints()
     }
     

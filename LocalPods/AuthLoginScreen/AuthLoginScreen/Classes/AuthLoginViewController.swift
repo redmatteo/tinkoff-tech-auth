@@ -10,16 +10,12 @@ import RxCocoa
 import Validator
 
 public protocol AuthLoginViewControllerDelegate: class {
-    func loginDidChange(_ login: String)
-    func passwordDidChange(_ password: String)
-    func isSetPinDidChange(_ isSetPin: Bool)
     func loginButtonDidClicked(login: String, password: String, isSetPin: Bool)
 }
 
 @available(iOS 11.0, *)
 public class AuthLoginViewController: UIViewController {
     
-    var presenter: AuthLoginPresenter!
     public var delegate: AuthLoginViewControllerDelegate?
     
     var loginView: AuthLoginView {
@@ -37,23 +33,6 @@ public class AuthLoginViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         activateValidator()
-        setBindings()
-    }
-    
-    private func setBindings() {
-        _ = self.loginView.loginField.rx.text.bind { login in
-            self.delegate?.loginDidChange(login ?? "")
-        }
-        _ = self.loginView.passwordField.rx.text.bind { password in
-            self.delegate?.passwordDidChange(password ?? "")
-        }
-        _ = self.loginView.isSetPinCheckbox.rx.controlProperty(
-            editingEvents: .valueChanged,
-            getter: { (checkbox) -> Bool in
-            return checkbox.isChecked
-        }) { _,_ in }.bind { isChecked in
-            self.delegate?.isSetPinDidChange(isChecked)
-        }
     }
     
     @objc
@@ -74,12 +53,5 @@ public class AuthLoginViewController: UIViewController {
             view.loginButton.isEnabled = isValid
         }
     }
-    
-}
-
-@available(iOS 11.0, *)
-extension AuthLoginViewController: AuthLoginController {
-    
-    
     
 }
