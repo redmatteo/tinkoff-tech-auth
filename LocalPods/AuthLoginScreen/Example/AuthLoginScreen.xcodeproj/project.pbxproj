@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		53EF7F3B7B40DC54158F0AC7 /* Pods_AuthLoginScreen_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CA8DA24C3B6EF38DDC9BAF2 /* Pods_AuthLoginScreen_Example.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
-		CFA8169C8D834DB973037F46 /* Pods_AuthLoginScreen_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58A247937E2F1CEF78B2DCEE /* Pods_AuthLoginScreen_Tests.framework */; };
+		A4993791B31E6105D8C546C0 /* libPods-AuthLoginScreen_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EC4BC2E79C5CDCC079ED65D /* libPods-AuthLoginScreen_Example.a */; };
+		EBCA80EE84DE051BE208534B /* libPods-AuthLoginScreen_Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B17483DCF245AED17A6387F9 /* libPods-AuthLoginScreen_Tests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,10 +28,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1153315CE8EA1E763D782ACB /* AuthLoginScreen.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = AuthLoginScreen.podspec; path = ../AuthLoginScreen.podspec; sourceTree = "<group>"; };
+		1153315CE8EA1E763D782ACB /* AuthLoginScreen.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = AuthLoginScreen.podspec; path = ../AuthLoginScreen.podspec; sourceTree = "<group>"; };
 		25A266F1AD53FDE11FB8D78F /* Pods-AuthLoginScreen_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AuthLoginScreen_Tests.debug.xcconfig"; path = "Target Support Files/Pods-AuthLoginScreen_Tests/Pods-AuthLoginScreen_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		3CA8DA24C3B6EF38DDC9BAF2 /* Pods_AuthLoginScreen_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AuthLoginScreen_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		58A247937E2F1CEF78B2DCEE /* Pods_AuthLoginScreen_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AuthLoginScreen_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4EC4BC2E79C5CDCC079ED65D /* libPods-AuthLoginScreen_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AuthLoginScreen_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* AuthLoginScreen_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AuthLoginScreen_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -43,10 +42,11 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		62369335767B87B8A3A2D97D /* Pods-AuthLoginScreen_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AuthLoginScreen_Example.debug.xcconfig"; path = "Target Support Files/Pods-AuthLoginScreen_Example/Pods-AuthLoginScreen_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		6F5874E59FF4E06EB79CE8EF /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		6F5874E59FF4E06EB79CE8EF /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		A1BA4C4A45F46EEE6D790F92 /* Pods-AuthLoginScreen_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AuthLoginScreen_Tests.release.xcconfig"; path = "Target Support Files/Pods-AuthLoginScreen_Tests/Pods-AuthLoginScreen_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		B17483DCF245AED17A6387F9 /* libPods-AuthLoginScreen_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AuthLoginScreen_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCA5B8FEA386E52621A5E66F /* Pods-AuthLoginScreen_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AuthLoginScreen_Example.release.xcconfig"; path = "Target Support Files/Pods-AuthLoginScreen_Example/Pods-AuthLoginScreen_Example.release.xcconfig"; sourceTree = "<group>"; };
-		F73D5645C250B42CE640000B /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		F73D5645C250B42CE640000B /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				53EF7F3B7B40DC54158F0AC7 /* Pods_AuthLoginScreen_Example.framework in Frameworks */,
+				A4993791B31E6105D8C546C0 /* libPods-AuthLoginScreen_Example.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,7 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFA8169C8D834DB973037F46 /* Pods_AuthLoginScreen_Tests.framework in Frameworks */,
+				EBCA80EE84DE051BE208534B /* libPods-AuthLoginScreen_Tests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,15 +77,14 @@
 				25A266F1AD53FDE11FB8D78F /* Pods-AuthLoginScreen_Tests.debug.xcconfig */,
 				A1BA4C4A45F46EEE6D790F92 /* Pods-AuthLoginScreen_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
 		329D637DAAE3E55C08EE2894 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3CA8DA24C3B6EF38DDC9BAF2 /* Pods_AuthLoginScreen_Example.framework */,
-				58A247937E2F1CEF78B2DCEE /* Pods_AuthLoginScreen_Tests.framework */,
+				4EC4BC2E79C5CDCC079ED65D /* libPods-AuthLoginScreen_Example.a */,
+				B17483DCF245AED17A6387F9 /* libPods-AuthLoginScreen_Tests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -171,7 +170,6 @@
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
-				463445DB0383D373432FEC6D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -213,10 +211,12 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = YX6VKW92JQ;
 						LastSwiftMigration = 0900;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = YX6VKW92JQ;
 						LastSwiftMigration = 0900;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -227,6 +227,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -262,24 +263,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		463445DB0383D373432FEC6D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AuthLoginScreen_Example/Pods-AuthLoginScreen_Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/AuthLoginScreen/AuthLoginScreen.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AuthLoginScreen.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AuthLoginScreen_Example/Pods-AuthLoginScreen_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		8CAFFFB17994BDDC9AB1F134 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -419,7 +402,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -465,7 +448,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -478,13 +461,15 @@
 			baseConfigurationReference = 62369335767B87B8A3A2D97D /* Pods-AuthLoginScreen_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = YX6VKW92JQ;
 				INFOPLIST_FILE = AuthLoginScreen/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -493,13 +478,15 @@
 			baseConfigurationReference = DCA5B8FEA386E52621A5E66F /* Pods-AuthLoginScreen_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = YX6VKW92JQ;
 				INFOPLIST_FILE = AuthLoginScreen/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -507,6 +494,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 25A266F1AD53FDE11FB8D78F /* Pods-AuthLoginScreen_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = YX6VKW92JQ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -520,7 +508,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AuthLoginScreen_Example.app/AuthLoginScreen_Example";
 			};
 			name = Debug;
@@ -529,6 +517,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A1BA4C4A45F46EEE6D790F92 /* Pods-AuthLoginScreen_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = YX6VKW92JQ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -538,7 +527,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AuthLoginScreen_Example.app/AuthLoginScreen_Example";
 			};
 			name = Release;

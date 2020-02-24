@@ -7,17 +7,23 @@
 //
 
 import UIKit
+import AuthLoginScreen
 
-class ViewController: UIViewController {
-
+@available(iOS 13.0, *)
+class ViewController: AuthLoginViewController, AuthLoginViewControllerDelegate {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        overrideUserInterfaceStyle = .light
+        self.delegate = self
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func loginButtonDidClicked(login: String, password: String, isSetPin: Bool) {
+        self.openLoadingView()
+        Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { _ in
+            self.closeLoadingView()
+            print((login, password, isSetPin))
+        }
     }
 
 }
