@@ -66,19 +66,19 @@ public class Checkbox: UIControl {
     /// The checboxes border color in its unchecked state.
     ///
     /// **Default:** The current tintColor.
-    public var uncheckedBorderColor: UIColor!
+    public var uncheckedBorderColor: UIColor?
     
     /// The checboxes border color in its checked state.
     ///
     /// **Default:** The current tintColor.
-    public var checkedBorderColor: UIColor!
+    public var checkedBorderColor: UIColor?
 
     /// **Default:** The current tintColor.
-    public var checkmarkColor: UIColor!
+    public var checkmarkColor: UIColor?
 
     /// **Default:** White.
     @available(swift, obsoleted: 4.1, renamed: "checkboxFillColor", message: "Defaults to a clear color")
-    public var checkboxBackgroundColor: UIColor! = .white
+    public var checkboxBackgroundColor: UIColor = .white
     
     /// The checkboxes fill color.
     ///
@@ -132,7 +132,7 @@ public class Checkbox: UIControl {
     }
 
     private func setupDefaults() {
-        backgroundColor = UIColor.init(white: 1, alpha: 0)
+        backgroundColor = UIColor(white: 1, alpha: 0)
         uncheckedBorderColor = tintColor
         checkedBorderColor = tintColor
         checkmarkColor = tintColor
@@ -172,9 +172,9 @@ public class Checkbox: UIControl {
         let rectanglePath = UIBezierPath(roundedRect: rect, cornerRadius: borderCornerRadius)
 
         if isChecked {
-            checkedBorderColor.setStroke()
+            checkedBorderColor?.setStroke()
         } else {
-            uncheckedBorderColor.setStroke()
+            uncheckedBorderColor?.setStroke()
         }
 
         rectanglePath.lineWidth = borderLineWidth
@@ -187,9 +187,9 @@ public class Checkbox: UIControl {
         let ovalPath = UIBezierPath(ovalIn: rect)
 
         if isChecked {
-            checkedBorderColor.setStroke()
+            checkedBorderColor?.setStroke()
         } else {
-            uncheckedBorderColor.setStroke()
+            uncheckedBorderColor?.setStroke()
         }
 
         ovalPath.lineWidth = borderLineWidth / 2
@@ -215,13 +215,13 @@ public class Checkbox: UIControl {
 
     private func circleCheckmark(rect: CGRect) {
         let ovalPath = UIBezierPath(ovalIn: rect)
-        checkmarkColor.setFill()
+        checkmarkColor?.setFill()
         ovalPath.fill()
     }
 
     private func squareCheckmark(rect: CGRect) {
         let path = UIBezierPath(rect: rect)
-        checkmarkColor.setFill()
+        checkmarkColor?.setFill()
         path.fill()
     }
 
@@ -231,7 +231,7 @@ public class Checkbox: UIControl {
         bezier4Path.addLine(to: CGPoint(x: rect.minX + 0.93750 * rect.width, y: rect.minY + 0.93548 * rect.height))
         bezier4Path.move(to: CGPoint(x: rect.minX + 0.93750 * rect.width, y: rect.minY + 0.06452 * rect.height))
         bezier4Path.addLine(to: CGPoint(x: rect.minX + 0.06250 * rect.width, y: rect.minY + 0.93548 * rect.height))
-        checkmarkColor.setStroke()
+        checkmarkColor?.setStroke()
         bezier4Path.lineWidth = checkmarkSize * 2
         bezier4Path.stroke()
     }
@@ -241,7 +241,7 @@ public class Checkbox: UIControl {
         bezierPath.move(to: CGPoint(x: rect.minX + 0.04688 * rect.width, y: rect.minY + 0.63548 * rect.height))
         bezierPath.addLine(to: CGPoint(x: rect.minX + 0.34896 * rect.width, y: rect.minY + 0.95161 * rect.height))
         bezierPath.addLine(to: CGPoint(x: rect.minX + 0.95312 * rect.width, y: rect.minY + 0.04839 * rect.height))
-        checkmarkColor.setStroke()
+        checkmarkColor?.setStroke()
         bezierPath.lineWidth = checkmarkSize * 2
         bezierPath.stroke()
     }

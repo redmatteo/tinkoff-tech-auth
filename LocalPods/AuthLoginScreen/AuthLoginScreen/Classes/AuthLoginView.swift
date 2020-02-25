@@ -107,12 +107,12 @@ public class AuthLoginView: UIView {
     
     private func setupLayout() {
         self.addSubview(scrollView)
-        self.scrollView.addContentSubview(titleLabel)
-        self.scrollView.addContentSubview(loginField)
-        self.scrollView.addContentSubview(passwordField)
-        self.scrollView.addContentSubview(loginButton)
-        self.scrollView.addContentSubview(isSetPinCheckbox)
-        self.scrollView.addContentSubview(isSetPinLabel)
+        scrollView.addContentSubview(titleLabel)
+        scrollView.addContentSubview(loginField)
+        scrollView.addContentSubview(passwordField)
+        scrollView.addContentSubview(loginButton)
+        scrollView.addContentSubview(isSetPinCheckbox)
+        scrollView.addContentSubview(isSetPinLabel)
         configureUI()
         setupConstraints()
     }
@@ -122,41 +122,41 @@ public class AuthLoginView: UIView {
         let safeArea = self.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
-            self.scrollView.topAnchor.constraint(equalTo: safeArea.topAnchor),
-            self.scrollView.leftAnchor.constraint(equalTo: safeArea.leftAnchor),
-            self.scrollView.rightAnchor.constraint(equalTo: safeArea.rightAnchor),
-            self.scrollView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
+            scrollView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            scrollView.leftAnchor.constraint(equalTo: safeArea.leftAnchor),
+            scrollView.rightAnchor.constraint(equalTo: safeArea.rightAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
         ])
         
         NSLayoutConstraint.activate([
-            self.titleLabel.topAnchor.constraint(equalTo: self.scrollView.contentView.topAnchor, constant: padding),
-            self.titleLabel.leftAnchor.constraint(equalTo: self.scrollView.contentView.leftAnchor, constant: padding),
-            self.titleLabel.rightAnchor.constraint(equalTo: self.scrollView.contentView.rightAnchor, constant: padding * 2),
+            titleLabel.topAnchor.constraint(equalTo: scrollView.contentView.topAnchor, constant: padding),
+            titleLabel.leftAnchor.constraint(equalTo: scrollView.contentView.leftAnchor, constant: padding),
+            titleLabel.rightAnchor.constraint(equalTo: scrollView.contentView.rightAnchor, constant: padding * 2),
             
-            self.loginField.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: padding),
-            self.loginField.leftAnchor.constraint(equalTo: self.scrollView.contentView.leftAnchor, constant: padding),
-            self.loginField.centerXAnchor.constraint(equalTo: self.scrollView.contentView.centerXAnchor),
-            self.loginField.heightAnchor.constraint(equalToConstant: 50),
+            loginField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: padding),
+            loginField.leftAnchor.constraint(equalTo: scrollView.contentView.leftAnchor, constant: padding),
+            loginField.centerXAnchor.constraint(equalTo: scrollView.contentView.centerXAnchor),
+            loginField.heightAnchor.constraint(equalToConstant: 50),
             
-            self.passwordField.topAnchor.constraint(equalTo: self.loginField.bottomAnchor, constant: padding),
-            self.passwordField.leftAnchor.constraint(equalTo: self.loginField.leftAnchor),
-            self.passwordField.centerXAnchor.constraint(equalTo: self.scrollView.contentView.centerXAnchor),
-            self.passwordField.heightAnchor.constraint(equalToConstant: 50),
+            passwordField.topAnchor.constraint(equalTo: loginField.bottomAnchor, constant: padding),
+            passwordField.leftAnchor.constraint(equalTo: loginField.leftAnchor),
+            passwordField.centerXAnchor.constraint(equalTo: scrollView.contentView.centerXAnchor),
+            passwordField.heightAnchor.constraint(equalToConstant: 50),
             
-            self.isSetPinCheckbox.topAnchor.constraint(equalTo: self.passwordField.bottomAnchor, constant: padding),
-            self.isSetPinCheckbox.leftAnchor.constraint(equalTo: self.passwordField.leftAnchor),
-            self.isSetPinCheckbox.heightAnchor.constraint(equalToConstant: 25),
-            self.isSetPinCheckbox.widthAnchor.constraint(equalToConstant: 25),
+            isSetPinCheckbox.topAnchor.constraint(equalTo: passwordField.bottomAnchor, constant: padding),
+            isSetPinCheckbox.leftAnchor.constraint(equalTo: passwordField.leftAnchor),
+            isSetPinCheckbox.heightAnchor.constraint(equalToConstant: 25),
+            isSetPinCheckbox.widthAnchor.constraint(equalToConstant: 25),
             
-            self.isSetPinLabel.centerYAnchor.constraint(equalTo: self.isSetPinCheckbox.centerYAnchor),
-            self.isSetPinLabel.leftAnchor.constraint(equalTo: self.isSetPinCheckbox.rightAnchor, constant: 10),
-            self.isSetPinLabel.rightAnchor.constraint(equalTo: self.scrollView.contentView.rightAnchor, constant: -padding),
+            isSetPinLabel.centerYAnchor.constraint(equalTo: isSetPinCheckbox.centerYAnchor),
+            isSetPinLabel.leftAnchor.constraint(equalTo: isSetPinCheckbox.rightAnchor, constant: 10),
+            isSetPinLabel.rightAnchor.constraint(equalTo: scrollView.contentView.rightAnchor, constant: -padding),
             
-            self.loginButton.topAnchor.constraint(equalTo: self.isSetPinCheckbox.bottomAnchor, constant: padding),
-            self.loginButton.centerXAnchor.constraint(equalTo: self.scrollView.contentView.centerXAnchor),
-            self.loginButton.leftAnchor.constraint(equalTo: self.scrollView.contentView.leftAnchor, constant: padding),
-            self.loginButton.bottomAnchor.constraint(lessThanOrEqualTo: self.scrollView.contentView.bottomAnchor, constant: -padding),
-            self.loginButton.heightAnchor.constraint(equalToConstant: 50)
+            loginButton.topAnchor.constraint(equalTo: isSetPinCheckbox.bottomAnchor, constant: padding),
+            loginButton.centerXAnchor.constraint(equalTo: scrollView.contentView.centerXAnchor),
+            loginButton.leftAnchor.constraint(equalTo: scrollView.contentView.leftAnchor, constant: padding),
+            loginButton.bottomAnchor.constraint(lessThanOrEqualTo: scrollView.contentView.bottomAnchor, constant: -padding),
+            loginButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
     

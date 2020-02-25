@@ -67,7 +67,7 @@ open class AuthLoginViewController: LoadingViewController {
 extension AuthLoginViewController: UITextFieldDelegate {
     
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        let nextTag: NSInteger = textField.tag + 1
+        let nextTag = textField.tag + 1
         if let nextResponder = self.loginView.viewWithTag(nextTag) {
             nextResponder.becomeFirstResponder()
         } else {
