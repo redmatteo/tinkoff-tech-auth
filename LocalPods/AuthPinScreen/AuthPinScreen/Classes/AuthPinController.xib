@@ -44,23 +44,11 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xph-O0-luk">
                         <rect key="frame" x="0.0" y="44" width="414" height="508"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QYd-O3-uZq">
-                                <rect key="frame" x="20" y="20" width="40" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="eQZ-Aj-WGG"/>
-                                    <constraint firstAttribute="height" constant="40" id="iIu-eR-6AZ"/>
-                                </constraints>
-                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <state key="normal" image="chevron.left" catalog="system"/>
-                                <connections>
-                                    <action selector="touchBackBtn:" destination="-1" eventType="touchUpInside" id="CZ7-BH-n1Q"/>
-                                </connections>
-                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="M9H-rJ-qZv">
-                                <rect key="frame" x="87" y="182" width="240" height="144"/>
+                                <rect key="frame" x="87" y="147" width="240" height="214"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="LrT-9j-u6s" userLabel="SetPin Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="62"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="LrT-9j-u6s" userLabel="SetPin Stack View">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="67"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Введите PIN код" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="juO-EH-dYd">
                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="30"/>
@@ -72,7 +60,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oZQ-kw-gX2">
-                                                <rect key="frame" x="0.0" y="45" width="240" height="17"/>
+                                                <rect key="frame" x="0.0" y="50" width="240" height="17"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="476-IM-kyf">
                                                         <rect key="frame" x="55" y="0.0" width="130" height="17"/>
@@ -112,8 +100,8 @@
                                             </view>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Dhz-AA-h1w" userLabel="ConfirmPin Stack View">
-                                        <rect key="frame" x="0.0" y="82" width="240" height="62"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Dhz-AA-h1w" userLabel="ConfirmPin Stack View">
+                                        <rect key="frame" x="0.0" y="87" width="240" height="127"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Повторите PIN код" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mpc-br-0JV">
                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="30"/>
@@ -125,7 +113,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F3E-Re-q5w">
-                                                <rect key="frame" x="0.0" y="45" width="240" height="17"/>
+                                                <rect key="frame" x="0.0" y="50" width="240" height="17"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="BXN-LI-XAL">
                                                         <rect key="frame" x="55" y="0.0" width="130" height="17"/>
@@ -163,31 +151,31 @@
                                                     <constraint firstAttribute="bottom" secondItem="BXN-LI-XAL" secondAttribute="bottom" id="wUW-m4-Sln"/>
                                                 </constraints>
                                             </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LqN-WU-Vbf">
+                                                <rect key="frame" x="0.0" y="87" width="240" height="40"/>
+                                                <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="f06-nt-vYO"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <state key="normal" title="Пропустить">
+                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="touchSkipBtn:" destination="-1" eventType="touchUpInside" id="8vZ-fC-fDE"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LqN-WU-Vbf">
-                                <rect key="frame" x="20" y="356" width="374" height="50"/>
-                                <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="f06-nt-vYO"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Войти">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="touchSignInBtn:" destination="-1" eventType="touchUpInside" id="8vZ-fC-fDE"/>
-                                </connections>
-                            </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z3z-Yx-5dL">
-                                <rect key="frame" x="20" y="416" width="374" height="20.5"/>
+                                <rect key="frame" x="30" y="376" width="354" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -195,16 +183,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="LqN-WU-Vbf" firstAttribute="top" secondItem="M9H-rJ-qZv" secondAttribute="bottom" constant="30" id="1vW-OR-ETn"/>
                             <constraint firstItem="M9H-rJ-qZv" firstAttribute="centerY" secondItem="Xph-O0-luk" secondAttribute="centerY" id="FwD-uf-vcF"/>
-                            <constraint firstItem="z3z-Yx-5dL" firstAttribute="centerX" secondItem="Xph-O0-luk" secondAttribute="centerX" id="Gc8-2a-EZE"/>
-                            <constraint firstItem="z3z-Yx-5dL" firstAttribute="leading" secondItem="Xph-O0-luk" secondAttribute="leading" constant="20" id="O3U-Ye-Pxp"/>
-                            <constraint firstItem="QYd-O3-uZq" firstAttribute="top" secondItem="Xph-O0-luk" secondAttribute="top" constant="20" id="OJk-1s-OUJ"/>
-                            <constraint firstItem="LqN-WU-Vbf" firstAttribute="centerX" secondItem="Xph-O0-luk" secondAttribute="centerX" id="Voq-WN-qoi"/>
+                            <constraint firstItem="z3z-Yx-5dL" firstAttribute="leading" secondItem="Xph-O0-luk" secondAttribute="leading" constant="30" id="SMe-1u-qnX"/>
                             <constraint firstItem="M9H-rJ-qZv" firstAttribute="centerX" secondItem="Xph-O0-luk" secondAttribute="centerX" id="aE7-LR-Gfr"/>
-                            <constraint firstItem="z3z-Yx-5dL" firstAttribute="top" secondItem="LqN-WU-Vbf" secondAttribute="bottom" constant="10" id="ddY-Ne-Esg"/>
-                            <constraint firstItem="LqN-WU-Vbf" firstAttribute="leading" secondItem="Xph-O0-luk" secondAttribute="leading" constant="20" id="ivG-rS-eF5"/>
-                            <constraint firstItem="QYd-O3-uZq" firstAttribute="leading" secondItem="Xph-O0-luk" secondAttribute="leading" constant="20" id="tfu-eu-PAV"/>
+                            <constraint firstItem="z3z-Yx-5dL" firstAttribute="centerX" secondItem="Xph-O0-luk" secondAttribute="centerX" id="gt4-Yb-l5Y"/>
+                            <constraint firstItem="z3z-Yx-5dL" firstAttribute="top" secondItem="M9H-rJ-qZv" secondAttribute="bottom" constant="15" id="iZb-79-cEy"/>
                         </constraints>
                     </view>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="lPi-58-S1k" userLabel="Number Stack View">
@@ -383,7 +366,6 @@
         </viewController>
     </objects>
     <resources>
-        <image name="chevron.left" catalog="system" width="48" height="64"/>
         <image name="circle.fill" catalog="system" width="64" height="60"/>
         <image name="delete.left.fill" catalog="system" width="64" height="52"/>
     </resources>

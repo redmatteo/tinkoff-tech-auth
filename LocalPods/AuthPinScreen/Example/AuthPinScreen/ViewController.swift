@@ -38,8 +38,8 @@ class ViewController: AuthPinController, AuthPinControllerDelegate {
         print("Success Sign in")
     }
     
-    func didTouchBackBtn() {
-        print("Touch Back Btn")
+    func didTouchSkipBtn() {
+        print("Touch Skip Btn")
     }
     
 }

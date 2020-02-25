@@ -42,12 +42,11 @@ open class AuthPinController: UIViewController {
     override open func viewDidLoad() {
         super.viewDidLoad()
         setupState()
-        overrideUserInterfaceStyle = .light  
+        overrideUserInterfaceStyle = .light
     }
     
     override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        activateSignInBtn(active: false)
         setupConfirmStack()
     }
     
@@ -70,7 +69,7 @@ open class AuthPinController: UIViewController {
             switch self.state {
             case .confirmPin(let savedPin):
                 self.savedPin = savedPin
-                self.activateSignInBtn(active: true)
+                self.pinVerification()
             case .setPin:
                 self.setupConfirmPin()
             }
@@ -85,7 +84,7 @@ open class AuthPinController: UIViewController {
         }
         confirmPincode?.didFinishedEnterPin = { code in
             print("Confirm Pincode is: \(code)")
-            self.activateSignInBtn(active: true)
+            self.pinVerification()
         }
     }
     
@@ -105,9 +104,8 @@ open class AuthPinController: UIViewController {
         }
     }
     
-    private func activateSignInBtn(active: Bool) {
-        signInBtn?.isUserInteractionEnabled = active
-        signInBtn?.backgroundColor = active ? .systemYellow : .lightGray
+    private func configureSkipBtn() {
+        
     }
     
     private func catchError(msg: String) {
@@ -115,7 +113,6 @@ open class AuthPinController: UIViewController {
         errorLbl?.isHidden = false
         pincode?.removeAllText()
         confirmPincode?.removeAllText()
-        activateSignInBtn(active: false)
     }
     
     // MARK: - Actions
@@ -130,7 +127,6 @@ open class AuthPinController: UIViewController {
     }
     
     @IBAction func touchRemoveBtn(_ sender: Any) {
-        activateSignInBtn(active: false)
         if let confirmPincode = confirmPincode, confirmPincode.hasText {
             confirmPincode.removeText()
         } else if let pincode = pincode, pincode.hasText {
@@ -138,7 +134,7 @@ open class AuthPinController: UIViewController {
         }
     }
     
-    @IBAction func touchSignInBtn(_ sender: Any) {
+    private func pinVerification() {
         switch state {
         case .setPin:
             guard pincode?.code == confirmPincode?.code, let newPin = pincode?.code else {
@@ -157,8 +153,8 @@ open class AuthPinController: UIViewController {
         }
     }
     
-    @IBAction func touchBackBtn(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
+    @IBAction func touchSkipBtn(_ sender: Any) {
+        delegate?.didTouchSkipBtn()
     }
     
 }
