@@ -193,7 +193,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="LqN-WU-Vbf" firstAttribute="top" secondItem="M9H-rJ-qZv" secondAttribute="bottom" constant="30" id="1vW-OR-ETn"/>
                             <constraint firstItem="M9H-rJ-qZv" firstAttribute="centerY" secondItem="Xph-O0-luk" secondAttribute="centerY" id="FwD-uf-vcF"/>
@@ -359,6 +359,7 @@
                                 </constraints>
                             </stackView>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Tpb-1u-ECe" firstAttribute="height" secondItem="pC4-xT-yyC" secondAttribute="height" id="1gd-Ir-PdY"/>
                             <constraint firstItem="Tpb-1u-ECe" firstAttribute="height" secondItem="59L-07-TuY" secondAttribute="height" id="twc-hT-yIc"/>
@@ -366,7 +367,7 @@
                         </constraints>
                     </stackView>
                 </subviews>
-                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="Xph-O0-luk" firstAttribute="top" secondItem="anh-rA-8DA" secondAttribute="top" id="8Bt-y1-1vm"/>
                     <constraint firstItem="lPi-58-S1k" firstAttribute="top" secondItem="Xph-O0-luk" secondAttribute="bottom" id="W06-pN-QbA"/>

@@ -42,6 +42,7 @@ open class AuthPinController: UIViewController {
     override open func viewDidLoad() {
         super.viewDidLoad()
         setupState()
+        overrideUserInterfaceStyle = .light  
     }
     
     override open func viewWillAppear(_ animated: Bool) {
