@@ -39,7 +39,7 @@ class RootAppController: UINavigationController {
     }
     
     private func runConfirmPin(_ code: String) {
-        guard let pin = AuthPinController.new() else { return }
+        let pin = AuthPin()
         pin.delegate = self
         pin.state = .confirmPin(code)
         setViewControllers([pin], animated: true)
@@ -99,6 +99,8 @@ extension RootAppController: AuthPinControllerDelegate {
     }
     
     func didSetNewPin(_ pin: String) {
+        guard let code = Int(pin) else { return }
+        
         sendNewPin(pin)
         runContent()
     }
