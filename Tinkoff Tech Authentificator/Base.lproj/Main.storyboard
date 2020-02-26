@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Root App Controller-->
         <scene sceneID="R4O-7h-LQ8">
             <objects>
-                <navigationController id="lie-dv-X8N" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="RootAppController" id="lie-dv-X8N" customClass="RootAppController" customModule="Tinkoff_Tech_Authentificator" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="i8D-8x-htz">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -27,11 +27,32 @@
         <!--Content Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ContentController" customModule="Tinkoff_Tech_Authentificator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ContentController" id="BYZ-38-t0r" customClass="ContentController" customModule="Tinkoff_Tech_Authentificator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="PGr-JL-ifY">
+                                <rect key="frame" x="112.5" y="413" width="189" height="70.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Успешно авторизованы" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OJd-RR-jdJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="189" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sW7-qR-cdk">
+                                        <rect key="frame" x="0.0" y="40.5" width="189" height="30"/>
+                                        <state key="normal" title="Выйти"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="PGr-JL-ifY" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="FEk-pe-nJF"/>
+                            <constraint firstItem="PGr-JL-ifY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cbH-Ig-plY"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="tje-bk-kcR"/>

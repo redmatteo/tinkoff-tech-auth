@@ -13,6 +13,18 @@ public enum AuthPinState {
 }
 
 @available(iOS 9.0, *)
+extension AuthPinController {
+    public class func new() -> AuthPinController? {
+        let authPinBundle = Bundle(for: AuthPinController.self)
+        guard let controller = authPinBundle
+            .loadNibNamed("AuthPinController", owner: self, options: nil)?.first as? AuthPinController else {
+            return nil
+        }
+        return controller
+    }
+}
+
+@available(iOS 9.0, *)
 open class AuthPinController: UIViewController {
     
     //setPin

@@ -10,14 +10,7 @@ import UIKit
 import AuthManager
 
 class ContentController: UIViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        AuthManager.authentificate()
-        // Do any additional setup after loading the view.
     }
-
-
 }
-
