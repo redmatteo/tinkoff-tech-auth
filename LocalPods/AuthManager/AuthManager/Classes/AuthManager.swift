@@ -46,10 +46,9 @@ public class AuthManager {
 
 private class Keyсhain {
     func save(key: String, string: String) -> OSStatus {
-//        let data = string
         let query: [String : Any] = [kSecClass as String: kSecClassGenericPassword,
                                      kSecAttrAccount as String: key,
-                                     kSecValueData as String: Data(string.utf8)]
+                                     kSecValueData as String: string]
         SecItemDelete(query as CFDictionary)
         return SecItemAdd(query as CFDictionary, nil)
     }
