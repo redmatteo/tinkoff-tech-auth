@@ -1,16 +1,37 @@
 PODS:
-  - AuthLoginScreen (0.1.0)
+  - AuthLoginScreen (0.1.0):
+    - RxCocoa
+    - RxSwift
+    - Validator
+  - RxCocoa (5.0.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.0.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.0.1)
+  - Validator (3.2.1)
 
 DEPENDENCIES:
   - AuthLoginScreen (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+    - Validator
 
 EXTERNAL SOURCES:
   AuthLoginScreen:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AuthLoginScreen: 598ec92b561e61497f60422d72f9410bf150d318
+  AuthLoginScreen: 9f1b6ab2e2b9305458e0bcc2979c0b0843e1832d
+  RxCocoa: e741b9749968e8a143e2b787f1dfbff2b63d0a5c
+  RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
+  RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
+  Validator: 80a6f567220c962dfd2d9928ae98a8c1d164f6f4
 
-PODFILE CHECKSUM: 2b82a036e06c3b458c8ecd4593a8d15d987dd668
+PODFILE CHECKSUM: 74671ba0906f6d7a4b445b66f00da982ea6ad685
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.0.beta.3
