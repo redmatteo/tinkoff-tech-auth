@@ -16,12 +16,28 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="tY2-2k-JQs"/>
+                        <segue destination="Uw0-ZY-ydA" kind="relationship" relationship="rootViewController" id="Et1-jm-MTB"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="huc-z9-qE2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-671" y="9"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="odn-4H-4A6">
+            <objects>
+                <viewController id="Uw0-ZY-ydA" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7rS-pN-Ohw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="GED-EG-Ubn"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="va7-wy-djs"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="94P-gT-dki" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-671" y="735"/>
         </scene>
         <!--Content Controller-->
         <scene sceneID="tne-QT-ifu">
