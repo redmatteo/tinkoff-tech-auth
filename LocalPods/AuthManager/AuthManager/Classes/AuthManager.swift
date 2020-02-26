@@ -38,7 +38,7 @@ public class AuthManager {
     }
     
     public func resetCredentials() {
-        _ = keychain.remove(key: KeychainKeys.login.rawValue)
+        _ = keychain.remove(key: KeychainKeys.login.rawValue)
         _ = keychain.remove(key: KeychainKeys.password.rawValue)
         _ = keychain.remove(key: KeychainKeys.pin.rawValue)
     }
@@ -48,9 +48,10 @@ private class Keyсhain {
     func save(key: String, string: String) -> OSStatus {
         let query: [String : Any] = [kSecClass as String: kSecClassGenericPassword,
                                      kSecAttrAccount as String: key,
-                                     kSecValueData as String: string]
+                                     kSecValueData as String: Data(string.utf8)]
         SecItemDelete(query as CFDictionary)
-        return SecItemAdd(query as CFDictionary, nil)
+        let status = SecItemAdd(query as CFDictionary, nil)
+        return status
     }
 
     func remove(key: String) -> OSStatus {
