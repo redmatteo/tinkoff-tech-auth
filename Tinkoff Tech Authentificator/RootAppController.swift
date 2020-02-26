@@ -26,8 +26,8 @@ class RootAppController: UINavigationController {
             switch state {
             case .credentials:
                 self?.runLogin()
-            case .confirmPin:
-                self?.runConfirmPin()
+            case .confirmPin(let code):
+                self?.runConfirmPin(code)
             }
         }
     }
@@ -38,8 +38,11 @@ class RootAppController: UINavigationController {
         setViewControllers([login], animated: true)
     }
     
-    private func runConfirmPin() {
-        // TODO AuthLoginScreen
+    private func runConfirmPin(_ code: String) {
+        guard let pin = AuthPinController.new() else { return }
+        pin.delegate = self
+        pin.state = .confirmPin(code)
+        setViewControllers([pin], animated: true)
     }
     
     private func runSetPinIfNeeded(_ needPin: Bool) {
@@ -63,11 +66,12 @@ class RootAppController: UINavigationController {
     }
     
     private func sendNewPin(_ code: String) {
-    
+        auth.sendPin(code: code)
     }
-    
-    private func sendConfirmPin(_ code: String) {
         
+    func dismissContent() {
+        auth.resetCredentials()
+        runLogin()
     }
 }
 
@@ -96,13 +100,14 @@ extension RootAppController: AuthPinControllerDelegate {
     
     func didSetNewPin(_ pin: String) {
         sendNewPin(pin)
+        runContent()
     }
     
     func didSuccessSignIn() {
-        
+        runContent()
     }
     
     func didTouchSkipBtn() {
-        
+        runContent()
     }
 }

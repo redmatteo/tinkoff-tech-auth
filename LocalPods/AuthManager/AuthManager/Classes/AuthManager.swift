@@ -13,7 +13,7 @@ public class AuthManager {
     }
     
     public enum State {
-        case credentials, confirmPin
+        case credentials, confirmPin(code: String)
     }
     
     private let keychain = Keyсhain()
@@ -22,7 +22,7 @@ public class AuthManager {
     
     public func authentificate(_ completion: (_ state: State) -> Void) {
         if let pin = keychain.load(key: KeychainKeys.pin.rawValue) {
-            completion(.confirmPin)
+            completion(.confirmPin(code: pin))
         } else {
             completion(.credentials)
         }

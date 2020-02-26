@@ -13,4 +13,9 @@ class ContentController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    @IBAction func touchUpLogout(_ sender: Any) {
+        guard let root = navigationController as? RootAppController else { return }
+        root.dismissContent()
+    }
 }
