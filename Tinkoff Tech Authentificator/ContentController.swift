@@ -8,8 +8,10 @@
 
 import UIKit
 import AuthManager
+import AuthPinScreen
 
 class ContentController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -18,4 +20,20 @@ class ContentController: UIViewController {
         guard let root = navigationController as? RootAppController else { return }
         root.dismissContent()
     }
+}
+
+class AuthPin: AuthPinController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupAuthPinController()
+    }
+    
+    func setupAuthPinController() {
+        let authPinBundle = Bundle(for: AuthPinController.self)
+        if let authPinController = authPinBundle.loadNibNamed("AuthPinController", owner: self, options: nil)?.first as? AuthPinController {
+            navigationController?.pushViewController(authPinController, animated: false)
+        }
+    }
+    
 }

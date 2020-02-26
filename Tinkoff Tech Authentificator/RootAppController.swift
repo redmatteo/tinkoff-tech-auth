@@ -50,10 +50,10 @@ class RootAppController: UINavigationController {
             runContent()
             return
         }
-        guard let pin = AuthPinController.new() else { return }
-        pin.delegate = self
-        pin.state = .setPin
-        setViewControllers([pin], animated: true)
+        let authPin = AuthPin()
+        authPin.delegate = self
+        authPin.state = .setPin
+        setViewControllers([authPin], animated: false)
     }
 
     private func runContent() {
