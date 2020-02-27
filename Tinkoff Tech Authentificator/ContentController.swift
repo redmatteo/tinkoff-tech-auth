@@ -8,16 +8,32 @@
 
 import UIKit
 import AuthManager
+import AuthPinScreen
 
 class ContentController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        AuthManager.authentificate()
-        // Do any additional setup after loading the view.
     }
-
-
+    
+    @IBAction func touchUpLogout(_ sender: Any) {
+        guard let root = navigationController as? RootAppController else { return }
+        root.dismissContent()
+    }
 }
 
+class AuthPin: AuthPinController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupAuthPinController()
+    }
+    
+    func setupAuthPinController() {
+        let authPinBundle = Bundle(for: AuthPinController.self)
+        if let authPinController = authPinBundle.loadNibNamed("AuthPinController", owner: self, options: nil)?.first as? AuthPinController {
+            navigationController?.pushViewController(authPinController, animated: false)
+        }
+    }
+    
+}

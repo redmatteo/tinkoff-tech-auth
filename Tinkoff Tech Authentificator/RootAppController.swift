@@ -8,6 +8,8 @@
 
 import UIKit
 import AuthManager
+import AuthLoginScreen
+import AuthPinScreen
 
 private typealias Credentials = (login: String, password: String)
 
@@ -24,38 +26,90 @@ class RootAppController: UINavigationController {
             switch state {
             case .credentials:
                 self?.runLogin()
-            case .setPin:
-                self?.runSetPin()
-            case .confirmPin:
-                self?.runConfirmPin()
+            case .confirmPin(let code):
+                self?.runConfirmPin(code)
             }
         }
     }
     
     private func runLogin() {
-        // TODO AuthLoginScreen
-        
-        let credentials: Credentials = (login: "fakelogin", password: "12345678")
-        sendCredentials(credentials)
+        let login = AuthLoginViewController()
+        login.delegate = self
+        setViewControllers([login], animated: true)
     }
     
-    private func runSetPin() {
-        // TODO AuthLoginScreen
+    private func runConfirmPin(_ code: String) {
+        let pin = AuthPin()
+        pin.delegate = self
+        pin.state = .confirmPin(code)
+        setViewControllers([pin], animated: true)
     }
     
-    private func runConfirmPin() {
-        // TODO AuthLoginScreen
+    private func runSetPinIfNeeded(_ needPin: Bool) {
+        guard needPin else {
+            runContent()
+            return
+        }
+        let authPin = AuthPin()
+        authPin.delegate = self
+        authPin.state = .setPin
+        setViewControllers([authPin], animated: false)
+    }
+
+    private func runContent() {
+        guard let content = R.storyboard.main.contentController() else { return }
+        setViewControllers([content], animated: true)
     }
     
     private func sendCredentials(_ credentials: Credentials) {
-        
+        auth.sendLoginCredentials(login: credentials.login, password: credentials.password)
     }
     
-    private func sendNewPinCode() {
-    
+    private func sendNewPin(_ code: String) {
+        auth.sendPin(code: code)
+    }
+        
+    func dismissContent() {
+        auth.resetCredentials()
+        runLogin()
+    }
+}
+
+// MARK: AuthLoginViewControllerDelegate
+extension RootAppController: AuthLoginViewControllerDelegate {
+    func loginButtonDidClicked(login: String, password: String, isSetPin: Bool) {
+        sendCredentials((login, password))
+        guard let login = viewControllers.first as? AuthLoginViewController else { return }
+        login.openLoadingView()
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.4) { [weak self] in
+            login.closeLoadingView()
+            self?.runSetPinIfNeeded(isSetPin)
+        }
+    }
+}
+
+extension RootAppController: AuthPinControllerDelegate {
+    var state: AuthPinState {
+        get {
+            .setPin
+        }
+        set(newValue) {
+            
+        }
     }
     
-    private func sendPinCode() {
+    func didSetNewPin(_ pin: String) {
+        guard let code = Int(pin) else { return }
         
+        sendNewPin(pin)
+        runContent()
+    }
+    
+    func didSuccessSignIn() {
+        runContent()
+    }
+    
+    func didTouchSkipBtn() {
+        runContent()
     }
 }

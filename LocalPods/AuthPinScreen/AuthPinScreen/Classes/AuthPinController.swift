@@ -13,6 +13,18 @@ public enum AuthPinState {
 }
 
 @available(iOS 9.0, *)
+extension AuthPinController {
+    public class func new() -> AuthPinController? {
+        let authPinBundle = Bundle(for: AuthPinController.self)
+        guard let controller = authPinBundle.loadNibNamed("AuthPinController", owner: self, options: nil)?.first as? AuthPinController else {
+            return nil
+        }
+
+        return controller
+    }
+}
+
+@available(iOS 9.0, *)
 open class AuthPinController: UIViewController {
     
     //setPin
@@ -41,7 +53,7 @@ open class AuthPinController: UIViewController {
     
     override open func viewDidLoad() {
         super.viewDidLoad()
-        setupState()
+//        setupState()
         if #available(iOS 13.0, *) {
             overrideUserInterfaceStyle = .light
         }
@@ -54,10 +66,10 @@ open class AuthPinController: UIViewController {
     
     // MARK: - Private func
     
-    private func setupState() {
-        guard let receivedState = delegate?.state else { return }
-        state = receivedState
-    }
+//    private func setupState() {
+//        guard let receivedState = delegate?.state else { return }
+//        state = receivedState
+//    }
     
     private func setupPin() {
         pincode = Pincode()
@@ -104,10 +116,6 @@ open class AuthPinController: UIViewController {
         case .confirmPin:
             confirmPinStack?.isHidden = true
         }
-    }
-    
-    private func configureSkipBtn() {
-        
     }
     
     private func catchError(msg: String) {

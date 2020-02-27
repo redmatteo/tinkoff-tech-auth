@@ -35,6 +35,13 @@ open class AuthLoginViewController: LoadingViewController {
         super.viewDidLoad()
         activateValidator()
         setHideKeyboardOnTap()
+        configureUI()
+    }
+    
+    private func configureUI() {
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        }
     }
     
     private func setHideKeyboardOnTap() {
