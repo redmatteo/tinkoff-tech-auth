@@ -5,6 +5,8 @@
 //  Created by Artem Kufaev on 23.02.2020.
 //
 
+import UIViewKit
+
 @available(iOS 11.0, *)
 public class AuthLoginView: UIView {
     
@@ -19,8 +21,8 @@ public class AuthLoginView: UIView {
         return label
     }()
     
-    private(set) lazy var loginField: UITextField = {
-        let field = UITextField()
+    private(set) lazy var loginField: TextField = {
+        let field = TextField()
         field.translatesAutoresizingMaskIntoConstraints = false
         field.placeholder = "Login"
         field.textContentType = .username
@@ -29,8 +31,8 @@ public class AuthLoginView: UIView {
         return field
     }()
     
-    private(set) lazy var passwordField: UITextField = {
-        let field = UITextField()
+    private(set) lazy var passwordField: TextField = {
+        let field = TextField()
         field.translatesAutoresizingMaskIntoConstraints = false
         field.placeholder = "Password"
         field.isSecureTextEntry = true
@@ -40,26 +42,16 @@ public class AuthLoginView: UIView {
         return field
     }()
     
-    private(set) lazy var loginButton: UIButton = {
-        let button = UIButton(type: .system)
+    private(set) lazy var loginButton: Button = {
+        let button = Button(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Войти", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.layer.cornerRadius = 15
-        button.setBackgroundColor(color: .systemYellow, forState: .normal)
-        button.setBackgroundColor(color: .lightGray, forState: .disabled)
         return button
     }()
     
     private(set) lazy var isSetPinCheckbox: Checkbox = {
         let checkbox = Checkbox()
         checkbox.translatesAutoresizingMaskIntoConstraints = false
-        checkbox.checkmarkStyle = .tick
-        checkbox.checkedBorderColor = .systemYellow
-        checkbox.borderCornerRadius = 7
-        checkbox.uncheckedBorderColor = .lightGray
-        checkbox.checkmarkColor = .systemYellow
-        checkbox.useHapticFeedback = false
         return checkbox
     }()
     
@@ -76,8 +68,6 @@ public class AuthLoginView: UIView {
     private(set) lazy var scrollView: VerticalScrollView = {
         let view = VerticalScrollView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.bounces = true
-        view.alwaysBounceVertical = true
         return view
     }()
     
@@ -89,7 +79,8 @@ public class AuthLoginView: UIView {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
+        setupLayout()
     }
     
     // MARK: - Actions

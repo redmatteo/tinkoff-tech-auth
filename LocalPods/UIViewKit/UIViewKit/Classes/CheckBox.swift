@@ -37,7 +37,7 @@ open class Checkbox: UIControl {
     /// Shape of the center checkmark that appears when `Checkbox.isChecked == true`.
     ///
     /// **Default:** `CheckmarkStyle.square`
-    public var checkmarkStyle: CheckmarkStyle = .square
+    public var checkmarkStyle: CheckmarkStyle = .tick
     @IBInspectable
     var checkmarkStyleAdapter: Int {
         get {
@@ -86,37 +86,36 @@ open class Checkbox: UIControl {
 
     /// The checboxes border color in its unchecked state.
     ///
-    /// **Default:** The current tintColor.
+    /// **Default:** Light gray
     @IBInspectable
-    public var uncheckedBorderColor: UIColor?
+    public var uncheckedBorderColor: UIColor = .lightGray
     
     /// The checboxes border color in its checked state.
     ///
-    /// **Default:** The current tintColor.
+    /// **Default:** Yellow
     @IBInspectable
-    public var checkedBorderColor: UIColor?
+    public var checkedBorderColor: UIColor = .systemYellow
 
-    /// **Default:** The current tintColor.
+    /// **Default:** Yellow
     @IBInspectable
-    public var checkmarkColor: UIColor?
+    public var checkmarkColor: UIColor = .systemYellow
 
     /// **Default:** White.
-    @available(swift, obsoleted: 4.1, renamed: "checkboxFillColor", message: "Defaults to a clear color")
     @IBInspectable
     public var checkboxBackgroundColor: UIColor = .white
     
     /// The checkboxes fill color.
     ///
-    /// **Default:** `UIColoe.Clear`
+    /// **Default:** `UIColor.Clear`
     @IBInspectable
     public var checkboxFillColor: UIColor = .clear
     
     /// Sets the corner radius for the checkbox border.
     ///
-    ///**Default:** `0.0`
+    /// **Default:** `7.0`
     /// - Note: Only applies to checkboxes with `BorderStyle.square`
     @IBInspectable
-    public var borderCornerRadius: CGFloat = 0.0
+    public var borderCornerRadius: CGFloat = 7.0
 
     /// Increases the controls touch area.
     ///
@@ -144,9 +143,9 @@ open class Checkbox: UIControl {
 
     /// Determines if tapping the checkbox generates haptic feedback to the user.
     ///
-    /// **Default:** `true`
+    /// **Default:** `false`
     @IBInspectable
-    public var useHapticFeedback: Bool = true
+    public var useHapticFeedback: Bool = false
 
     private var feedbackGenerator: UIImpactFeedbackGenerator?
 
@@ -168,9 +167,6 @@ open class Checkbox: UIControl {
 
     private func setupDefaults() {
         backgroundColor = .white
-        uncheckedBorderColor = tintColor
-        checkedBorderColor = tintColor
-        checkmarkColor = tintColor
 
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(recognizer:)))
         addGestureRecognizer(tapGesture)
@@ -207,9 +203,9 @@ open class Checkbox: UIControl {
         let rectanglePath = UIBezierPath(roundedRect: rect, cornerRadius: borderCornerRadius)
 
         if isChecked {
-            checkedBorderColor?.setStroke()
+            checkedBorderColor.setStroke()
         } else {
-            uncheckedBorderColor?.setStroke()
+            uncheckedBorderColor.setStroke()
         }
 
         rectanglePath.lineWidth = borderLineWidth
@@ -222,9 +218,9 @@ open class Checkbox: UIControl {
         let ovalPath = UIBezierPath(ovalIn: rect)
 
         if isChecked {
-            checkedBorderColor?.setStroke()
+            checkedBorderColor.setStroke()
         } else {
-            uncheckedBorderColor?.setStroke()
+            uncheckedBorderColor.setStroke()
         }
 
         ovalPath.lineWidth = borderLineWidth / 2
@@ -250,13 +246,13 @@ open class Checkbox: UIControl {
 
     private func circleCheckmark(rect: CGRect) {
         let ovalPath = UIBezierPath(ovalIn: rect)
-        checkmarkColor?.setFill()
+        checkmarkColor.setFill()
         ovalPath.fill()
     }
 
     private func squareCheckmark(rect: CGRect) {
         let path = UIBezierPath(rect: rect)
-        checkmarkColor?.setFill()
+        checkmarkColor.setFill()
         path.fill()
     }
 
@@ -266,7 +262,7 @@ open class Checkbox: UIControl {
         bezier4Path.addLine(to: CGPoint(x: rect.minX + 0.93750 * rect.width, y: rect.minY + 0.93548 * rect.height))
         bezier4Path.move(to: CGPoint(x: rect.minX + 0.93750 * rect.width, y: rect.minY + 0.06452 * rect.height))
         bezier4Path.addLine(to: CGPoint(x: rect.minX + 0.06250 * rect.width, y: rect.minY + 0.93548 * rect.height))
-        checkmarkColor?.setStroke()
+        checkmarkColor.setStroke()
         bezier4Path.lineWidth = checkmarkSize * 2
         bezier4Path.stroke()
     }
@@ -276,7 +272,7 @@ open class Checkbox: UIControl {
         bezierPath.move(to: CGPoint(x: rect.minX + 0.04688 * rect.width, y: rect.minY + 0.63548 * rect.height))
         bezierPath.addLine(to: CGPoint(x: rect.minX + 0.34896 * rect.width, y: rect.minY + 0.95161 * rect.height))
         bezierPath.addLine(to: CGPoint(x: rect.minX + 0.95312 * rect.width, y: rect.minY + 0.04839 * rect.height))
-        checkmarkColor?.setStroke()
+        checkmarkColor.setStroke()
         bezierPath.lineWidth = checkmarkSize * 2
         bezierPath.stroke()
     }

@@ -2,6 +2,7 @@ PODS:
   - AuthLoginScreen (0.1.0):
     - RxCocoa
     - RxSwift
+    - UIViewKit
     - Validator
   - AuthManager (0.1.0)
   - AuthPinScreen (0.1.0)
@@ -47,7 +48,7 @@ EXTERNAL SOURCES:
     :path: LocalPods/UIViewKit
 
 SPEC CHECKSUMS:
-  AuthLoginScreen: 9f1b6ab2e2b9305458e0bcc2979c0b0843e1832d
+  AuthLoginScreen: 1b3d4cf7e16f3329e8627b63b73ad044ab6cd5f6
   AuthManager: 6982d3ccd15f8767ca1230bec0fcf86961250330
   AuthPinScreen: aaa252f425aa924b6b5d1f0f233bd21a109b0c9d
   R.swift: 8cbc4fc69b740305b6a17c8a8ed968eb788962d9
@@ -56,7 +57,7 @@ SPEC CHECKSUMS:
   RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
   RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
   SwiftLint: 8f5d2f903e1c9bcbc832fd16771e80a263ac6cbb
-  UIViewKit: 8b4d8e706c214db9f93b67b3a1ec2f9c2b9b3834
+  UIViewKit: 8d8b12b203a9c4d13c1d060abb3f323a0ed626a5
   Validator: 80a6f567220c962dfd2d9928ae98a8c1d164f6f4
 
 PODFILE CHECKSUM: 90a8ce0e43efd25de42e9efdadbd9b0d469a6026

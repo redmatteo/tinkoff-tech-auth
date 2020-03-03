@@ -10,11 +10,15 @@ import Foundation
 @IBDesignable
 open class VerticalScrollView: UIScrollView {
     
-    private(set) lazy var contentView: UIView = {
+    // MARK: - Subviews
+    
+    public private(set) lazy var contentView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    
+    // MARK: - Init
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,9 +32,13 @@ open class VerticalScrollView: UIScrollView {
         configureUI()
     }
     
+    // MARK: - Actions
+    
     open func addContentSubview(_ view: UIView) {
         self.contentView.addSubview(view)
     }
+    
+    // MARK: - Configure
     
     private func configureUI() {
         self.bounces = true

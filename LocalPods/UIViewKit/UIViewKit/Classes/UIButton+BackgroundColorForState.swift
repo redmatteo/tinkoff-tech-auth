@@ -10,7 +10,7 @@ import Foundation
 @IBDesignable
 extension UIButton {
     
-    func setBackgroundColor(color: UIColor, forState: UIControl.State) {
+    public func setBackgroundColor(color: UIColor, forState: UIControl.State) {
         self.clipsToBounds = true  // add this to maintain corner radius
         UIGraphicsBeginImageContext(CGSize(width: 1, height: 1))
         if let context = UIGraphicsGetCurrentContext() {
