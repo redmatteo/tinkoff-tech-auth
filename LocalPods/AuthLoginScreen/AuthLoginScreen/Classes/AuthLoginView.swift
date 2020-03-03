@@ -41,6 +41,7 @@ public class AuthLoginView: UIView {
     private(set) lazy var loginButton: Button = {
         let button = Button(type: .system)
         button.setTitle("Войти", for: .normal)
+        button.isEnabled = false
         return button
     }()
     

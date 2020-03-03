@@ -5,8 +5,6 @@
 //  Created by Artem Kufaev on 23.02.2020.
 //
 
-import RxSwift
-import RxCocoa
 import Validator
 import UIViewKit
 
@@ -33,7 +31,6 @@ open class AuthLoginViewController: LoadingViewController {
     
     open override func viewDidLoad() {
         super.viewDidLoad()
-        activateValidator()
         setHideKeyboardOnTap()
         configureUI()
     }
@@ -57,20 +54,17 @@ open class AuthLoginViewController: LoadingViewController {
         self.delegate?.loginButtonDidClicked(login: login, password: password, isSetPin: isSetPin)
     }
     
-    private func activateValidator() {
-        let view = self.loginView
-        _ = Observable.combineLatest(view.loginField.rx.text, view.passwordField.rx.text)
-            .map { login, password in
-                return (login ?? "").validate(rules: AuthLoginValidator.loginValidateRules).isValid &&
-                    (password ?? "").validate(rules: AuthLoginValidator.passwordValidateRules).isValid
-        }.bind { isValid in
-            view.loginButton.isEnabled = isValid
-        }
-    }
-    
 }
 
 extension AuthLoginViewController: UITextFieldDelegate {
+    
+    public func textFieldDidChangeSelection(_ textField: UITextField) {
+        let login = self.loginView.loginField.text ?? ""
+        let password = self.loginView.passwordField.text ?? ""
+        loginView.loginButton.isEnabled =
+            login.validate(rules: AuthLoginValidator.loginValidateRules).isValid &&
+            password.validate(rules: AuthLoginValidator.passwordValidateRules).isValid
+    }
     
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let nextTag = textField.tag + 1

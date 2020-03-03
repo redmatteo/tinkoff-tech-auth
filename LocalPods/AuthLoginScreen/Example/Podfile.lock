@@ -1,15 +1,7 @@
 PODS:
   - AuthLoginScreen (0.1.0):
-    - RxCocoa
-    - RxSwift
     - UIViewKit
     - Validator
-  - RxCocoa (5.0.1):
-    - RxRelay (~> 5)
-    - RxSwift (~> 5)
-  - RxRelay (5.0.1):
-    - RxSwift (~> 5)
-  - RxSwift (5.0.1)
   - UIViewKit (0.1.0)
   - Validator (3.2.1)
 
@@ -19,9 +11,6 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
-    - RxCocoa
-    - RxRelay
-    - RxSwift
     - Validator
 
 EXTERNAL SOURCES:
@@ -31,10 +20,7 @@ EXTERNAL SOURCES:
     :path: "../../UIViewKit"
 
 SPEC CHECKSUMS:
-  AuthLoginScreen: 1b3d4cf7e16f3329e8627b63b73ad044ab6cd5f6
-  RxCocoa: e741b9749968e8a143e2b787f1dfbff2b63d0a5c
-  RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
-  RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
+  AuthLoginScreen: d20e1e5934e68d832915fa65a0df4d41467a4966
   UIViewKit: 8d8b12b203a9c4d13c1d060abb3f323a0ed626a5
   Validator: 80a6f567220c962dfd2d9928ae98a8c1d164f6f4
 
