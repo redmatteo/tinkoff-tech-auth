@@ -11,20 +11,38 @@ open class TextField: UITextField {
     // MARK: - Properties
     
     @IBInspectable
-    public var underLineWidth: CGFloat = 1.0 {
+    public var underLineWidth: CGFloat = 0.5 {
         didSet {
             updateUnderLineFrame()
         }
     }
     
     @IBInspectable
-    public var underLineColor: UIColor = .black {
+    public var underLineColor: UIColor = .lightGray {
         didSet {
             updateUnderLineUI()
         }
     }
     
     private lazy var underLine = CALayer()
+    
+    /// Sets left margin
+    @IBInspectable
+    public var leftMargin: CGFloat = 5.0 {
+        didSet {
+            setLeftMargin()
+            updateAccessoryViewFrame()
+        }
+    }
+    
+    /// Sets right margin
+    @IBInspectable
+    public var rightMargin: CGFloat = 5.0 {
+        didSet {
+            setRightMargin()
+            updateAccessoryViewFrame()
+        }
+    }
     
     // MARK: - Lifecycle
     
@@ -45,7 +63,7 @@ open class TextField: UITextField {
     
     open override func layoutSubviews() {
         super.layoutSubviews()
-        applyUnderLine() 
+        applyUnderLine()
     }
     
     // MARK: - Configure
@@ -53,6 +71,7 @@ open class TextField: UITextField {
     private func configureUI() {
         self.borderStyle = .none
         applyUnderLine()
+        setMargins()
     }
     
     private func applyUnderLine() {
@@ -72,6 +91,45 @@ open class TextField: UITextField {
     
     private func updateUnderLineUI() {
         underLine.backgroundColor = underLineColor.cgColor
+    }
+    
+    // MARK: - Margins
+    private var leftAcessoryView = UIView()
+    private var rightAcessoryView = UIView()
+    
+    private func setMargins() {
+        setLeftMargin()
+        setRightMargin()
+        updateAccessoryViewFrame()
+    }
+    
+    private func setLeftMargin() {
+        leftView = nil
+        leftViewMode = .never
+        guard leftMargin > 0 else { return }
+        leftAcessoryView.backgroundColor = .clear
+        leftView = leftAcessoryView
+        leftViewMode = .always
+    }
+    
+    private func setRightMargin() {
+        rightView = nil
+        rightViewMode = .never
+        guard rightMargin > 0 else { return }
+        rightAcessoryView.backgroundColor = .clear
+        rightView = rightAcessoryView
+        rightViewMode = .always
+    }
+    
+    private func updateAccessoryViewFrame() {
+        // Left View Frame
+        var leftRect = bounds
+        leftRect.size.width = leftMargin
+        leftAcessoryView.frame = leftRect
+        // Right View Frame
+        var rightRect = bounds
+        rightRect.size.width = rightMargin
+        rightAcessoryView.frame = rightRect
     }
     
 }
