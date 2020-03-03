@@ -15,6 +15,7 @@ PODS:
     - RxSwift (~> 5)
   - RxSwift (5.0.1)
   - SwiftLint (0.38.2)
+  - UIViewKit (0.1.0)
   - Validator (3.2.1)
 
 DEPENDENCIES:
@@ -23,6 +24,7 @@ DEPENDENCIES:
   - AuthPinScreen (from `LocalPods/AuthPinScreen`)
   - R.swift
   - SwiftLint
+  - UIViewKit (from `LocalPods/UIViewKit`)
 
 SPEC REPOS:
   trunk:
@@ -41,6 +43,8 @@ EXTERNAL SOURCES:
     :path: LocalPods/AuthManager
   AuthPinScreen:
     :path: LocalPods/AuthPinScreen
+  UIViewKit:
+    :path: LocalPods/UIViewKit
 
 SPEC CHECKSUMS:
   AuthLoginScreen: 9f1b6ab2e2b9305458e0bcc2979c0b0843e1832d
@@ -52,8 +56,9 @@ SPEC CHECKSUMS:
   RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
   RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
   SwiftLint: 8f5d2f903e1c9bcbc832fd16771e80a263ac6cbb
+  UIViewKit: 8b4d8e706c214db9f93b67b3a1ec2f9c2b9b3834
   Validator: 80a6f567220c962dfd2d9928ae98a8c1d164f6f4
 
-PODFILE CHECKSUM: 560a51ff25e592b5698442b8d77606a870228559
+PODFILE CHECKSUM: 90a8ce0e43efd25de42e9efdadbd9b0d469a6026
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.0
