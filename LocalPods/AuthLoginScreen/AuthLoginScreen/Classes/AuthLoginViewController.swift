@@ -8,12 +8,12 @@
 import RxSwift
 import RxCocoa
 import Validator
+import UIViewKit
 
 public protocol AuthLoginViewControllerDelegate: class {
     func loginButtonDidClicked(login: String, password: String, isSetPin: Bool)
 }
 
-@available(iOS 11.0, *)
 open class AuthLoginViewController: LoadingViewController {
     
     public weak var delegate: AuthLoginViewControllerDelegate?
@@ -70,7 +70,6 @@ open class AuthLoginViewController: LoadingViewController {
     
 }
 
-@available(iOS 11.0, *)
 extension AuthLoginViewController: UITextFieldDelegate {
     
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {

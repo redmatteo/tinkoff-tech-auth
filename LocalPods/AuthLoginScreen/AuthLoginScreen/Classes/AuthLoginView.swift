@@ -7,14 +7,12 @@
 
 import UIViewKit
 
-@available(iOS 11.0, *)
 public class AuthLoginView: UIView {
     
     // MARK: - Subviews
     
     private(set) lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.boldSystemFont(ofSize: 30)
         label.text = "Авторизуйтесь"
         label.numberOfLines = 0
@@ -23,7 +21,6 @@ public class AuthLoginView: UIView {
     
     private(set) lazy var loginField: TextField = {
         let field = TextField()
-        field.translatesAutoresizingMaskIntoConstraints = false
         field.placeholder = "Login"
         field.textContentType = .username
         field.tag = 0
@@ -33,7 +30,6 @@ public class AuthLoginView: UIView {
     
     private(set) lazy var passwordField: TextField = {
         let field = TextField()
-        field.translatesAutoresizingMaskIntoConstraints = false
         field.placeholder = "Password"
         field.isSecureTextEntry = true
         field.textContentType = .password
@@ -44,20 +40,14 @@ public class AuthLoginView: UIView {
     
     private(set) lazy var loginButton: Button = {
         let button = Button(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Войти", for: .normal)
         return button
     }()
     
-    private(set) lazy var isSetPinCheckbox: Checkbox = {
-        let checkbox = Checkbox()
-        checkbox.translatesAutoresizingMaskIntoConstraints = false
-        return checkbox
-    }()
+    private(set) lazy var isSetPinCheckbox = Checkbox()
     
     private(set) lazy var isSetPinLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Задать PIN"
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(isSetPinLabelTapped))
         label.isUserInteractionEnabled = true
@@ -65,11 +55,7 @@ public class AuthLoginView: UIView {
         return label
     }()
     
-    private(set) lazy var scrollView: VerticalScrollView = {
-        let view = VerticalScrollView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    private(set) lazy var scrollView = VerticalScrollView()
     
     // MARK: - Init
     
@@ -111,6 +97,14 @@ public class AuthLoginView: UIView {
     private func setupConstraints() {
         let padding: CGFloat = 20.0
         let safeArea = self.safeAreaLayoutGuide
+        
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        loginField.translatesAutoresizingMaskIntoConstraints = false
+        passwordField.translatesAutoresizingMaskIntoConstraints = false
+        loginButton.translatesAutoresizingMaskIntoConstraints = false
+        isSetPinCheckbox.translatesAutoresizingMaskIntoConstraints = false
+        isSetPinLabel.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: safeArea.topAnchor),

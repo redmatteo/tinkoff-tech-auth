@@ -19,9 +19,9 @@ class ViewController: AuthLoginViewController, AuthLoginViewControllerDelegate {
     }
     
     func loginButtonDidClicked(login: String, password: String, isSetPin: Bool) {
-        self.openLoadingView()
+        self.showSpinner()
         Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { _ in
-            self.closeLoadingView()
+            self.hideSpinner()
             print((login, password, isSetPin))
         }
     }
