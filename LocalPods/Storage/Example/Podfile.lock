@@ -1,0 +1,16 @@
+PODS:
+  - Storage (0.1.0)
+
+DEPENDENCIES:
+  - Storage (from `../`)
+
+EXTERNAL SOURCES:
+  Storage:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Storage: 61a29f08298ad18995313e0c204d37f4b83bb37a
+
+PODFILE CHECKSUM: eaf854e44f966ffc5f66a88758c41c3c0b777e11
+
+COCOAPODS: 1.9.0
