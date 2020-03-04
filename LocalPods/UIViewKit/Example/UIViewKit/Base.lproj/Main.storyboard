@@ -10,7 +10,7 @@
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="UIViewKit_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -19,40 +19,59 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7iG-bp-8kk" customClass="Checkbox" customModule="UIViewKit">
-                                <rect key="frame" x="16" y="164" width="29" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isChecked" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yPs-Mx-uva" customClass="Button" customModule="UIViewKit">
-                                <rect key="frame" x="124" y="70" width="96" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Y0A-Bt-xWp" customClass="PincodeView" customModule="UIViewKit">
+                                <rect key="frame" x="122.5" y="325" width="130" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="17" id="WTO-kL-JbB"/>
+                                    <constraint firstAttribute="width" constant="130" id="m7t-i0-Yf8"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EZg-JD-uO3">
+                                <rect key="frame" x="162" y="392" width="51" height="30"/>
+                                <state key="normal" title="Ввести"/>
+                                <connections>
+                                    <action selector="clicked:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="x1W-IZ-0nB"/>
+                                </connections>
                             </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ljX-sJ-F2p" customClass="VerticalScrollView" customModule="UIViewKit">
-                                <rect key="frame" x="84" y="288" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <viewLayoutGuide key="contentLayoutGuide" id="DH1-VD-Sko"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="p8L-yf-X4c"/>
-                            </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r3v-Lj-LBu" customClass="Button" customModule="UIViewKit">
-                                <rect key="frame" x="256" y="152" width="98" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hYZ-J0-Cmz">
+                                <rect key="frame" x="158.5" y="442" width="58" height="30"/>
+                                <state key="normal" title="Удалить"/>
+                                <connections>
+                                    <action selector="removed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="T39-Zn-DfC"/>
+                                </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="geqgew" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FBN-5D-iE4" customClass="TextField" customModule="UIViewKit">
-                                <rect key="frame" x="98" y="542" width="97" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FJt-xz-PsR">
+                                <rect key="frame" x="153.5" y="492" width="68" height="30"/>
+                                <state key="normal" title="Очистить"/>
+                                <connections>
+                                    <action selector="empty:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="m7u-CK-ZX4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mUL-hA-QVk">
+                                <rect key="frame" x="130" y="542" width="115" height="30"/>
+                                <state key="normal" title="Изменить цвета"/>
+                                <connections>
+                                    <action selector="randomColors:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="jIX-PF-flb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Y0A-Bt-xWp" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="4Uy-T1-UH9"/>
+                            <constraint firstItem="EZg-JD-uO3" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="5Fs-4H-lBR"/>
+                            <constraint firstItem="hYZ-J0-Cmz" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="5Pt-IH-YRg"/>
+                            <constraint firstItem="mUL-hA-QVk" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="7Nn-fO-Wab"/>
+                            <constraint firstItem="mUL-hA-QVk" firstAttribute="top" secondItem="FJt-xz-PsR" secondAttribute="bottom" constant="20" id="DsZ-m9-7eI"/>
+                            <constraint firstItem="EZg-JD-uO3" firstAttribute="top" secondItem="Y0A-Bt-xWp" secondAttribute="bottom" constant="50" id="Gy6-H7-iDA"/>
+                            <constraint firstItem="FJt-xz-PsR" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="fEu-HT-SHE"/>
+                            <constraint firstItem="hYZ-J0-Cmz" firstAttribute="top" secondItem="EZg-JD-uO3" secondAttribute="bottom" constant="20" id="hl5-Qx-eVo"/>
+                            <constraint firstItem="FJt-xz-PsR" firstAttribute="top" secondItem="hYZ-J0-Cmz" secondAttribute="bottom" constant="20" id="sc9-yI-ZCb"/>
+                            <constraint firstItem="Y0A-Bt-xWp" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="wtv-bF-w2a"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="pincodeView" destination="Y0A-Bt-xWp" id="FX0-3I-D3p"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
