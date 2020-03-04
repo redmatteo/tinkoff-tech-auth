@@ -9,51 +9,36 @@
 import UIKit
 import UIViewKit
 
-class ViewController: UIViewController {
+class Cell: UITableViewCell, ConfigurableCell {
+    typealias T = ViewModel
+    
+    func configure(_ viewModel: ViewModel, at indexPath: IndexPath) {
+        self.textLabel?.text = viewModel.text
+    }
+}
 
-    @IBOutlet weak var pincodeView: PincodeView!
+struct ViewModel {
+    let text: String
+}
+
+class ViewController: UIViewController {
+    
+    @IBOutlet weak var tableView: UITableView!
+    var adapter: TableViewAdapter<ViewModel, Cell>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func clicked(_ sender: Any) {
-        pincodeView.fillNextDot(animated: true)
-    }
-
-    @IBAction func removed(_ sender: Any) {
-        pincodeView.emptyLastDot(animated: true)
+        self.adapter = TableViewAdapter(table: tableView)
+        let models = [
+            ViewModel(text: "1"),
+            ViewModel(text: "2"),
+            ViewModel(text: "3"),
+            ViewModel(text: "4"),
+            ViewModel(text: "5"),
+            ViewModel(text: "6"),
+            ViewModel(text: "7")
+        ]
+        adapter.set(items: models)
     }
     
-    @IBAction func empty(_ sender: Any) {
-        pincodeView.emptyAllDots(animated: true)
-    }
-    
-    @IBAction func randomColors(_ sender: Any) {
-        pincodeView.emptyDotColor = .random()
-        pincodeView.filledDotColor = .random()
-    }
-    
-}
-
-
-extension CGFloat {
-    static func random() -> CGFloat {
-        return CGFloat(arc4random()) / CGFloat(UInt32.max)
-    }
-}
-
-extension UIColor {
-    static func random() -> UIColor {
-        return UIColor(red:   .random(),
-                       green: .random(),
-                       blue:  .random(),
-                       alpha: 1.0)
-    }
 }
