@@ -82,7 +82,7 @@ open class AuthPinController: LoadingViewController {
         if state == .setPin {
             pincode?.didFinishedEnterPin = { code in
                 self.titleLabel.text = "Повторите PIN"
-                self.pincodeView.emptyAllDots()
+                self.pincodeView.emptyAllDots(animated: true)
             }
             confirmPincode = Pincode(with: pincodeSize)
             confirmPincode?.didFinishedEnterPin = { code in
@@ -95,7 +95,7 @@ open class AuthPinController: LoadingViewController {
         titleLabel.text = "Введите PIN"
         pincode?.clear()
         confirmPincode?.clear()
-        pincodeView.emptyAllDots()
+        pincodeView.emptyAllDots(animated: true)
     }
     
     private func catchError(msg: String) {
@@ -109,14 +109,14 @@ open class AuthPinController: LoadingViewController {
     @IBAction func touchNumberBtn(_ sender: UIButton) {
         errorLbl?.isHidden = true
         guard let char = String(sender.tag).first else { return }
-        pincodeView.fillNextDot(animated: false)
+        pincodeView.fillNextDot(animated: true)
         activePincode?.insert(char)
     }
     
     @IBAction func touchRemoveBtn(_ sender: Any) {
         errorLbl?.isHidden = true
         activePincode?.removeLast()
-        pincodeView.emptyLastDot(animated: false)
+        pincodeView.emptyLastDot(animated: true)
     }
     
     private func pinVerification() {
