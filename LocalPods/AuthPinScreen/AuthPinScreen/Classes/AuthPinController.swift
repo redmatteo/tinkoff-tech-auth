@@ -98,28 +98,30 @@ open class AuthPinController: UIViewController {
     private func catchError(msg: String) {
         errorLbl?.text = msg
         errorLbl?.isHidden = false
-        pincode?.removeAllText()
-        confirmPincode?.removeAllText()
+        pincode?.clear()
+        confirmPincode?.clear()
     }
     
     // MARK: - Actions
     
     @IBAction func touchNumberBtn(_ sender: UIButton) {
         errorLbl?.isHidden = true
+        guard let char = String(sender.tag).first else { return }
         if let pincode = pincode, !pincode.isCodeFill() {
-            pincode.insertText("\(sender.tag)")
+            pincode.insert(char)
         } else if let confirmPincode = confirmPincode, !confirmPincode.isCodeFill() {
-            confirmPincode.insertText("\(sender.tag)")
+            confirmPincode.insert(char)
         }
         pincodeView.fillNextDot(animated: true)
     }
     
     @IBAction func touchRemoveBtn(_ sender: Any) {
+        errorLbl?.isHidden = true
         switch state {
         case .setPin:
-            pincode?.removeText()
+            pincode?.removeLast()
         case .confirmPin:
-            confirmPincode?.removeText()
+            confirmPincode?.removeLast()
         }
         pincodeView.emptyLastDot(animated: true)
     }
