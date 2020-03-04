@@ -1,3 +1,4 @@
+platform :ios, '11.0'
 use_frameworks!
 
 target 'AuthPinScreen_Example' do
@@ -6,6 +7,6 @@ target 'AuthPinScreen_Example' do
   target 'AuthPinScreen_Tests' do
     inherit! :search_paths
 
-    
+    pod 'UIViewKit', :path => '../../UIViewKit'
   end
 end
