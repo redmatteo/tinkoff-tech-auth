@@ -38,6 +38,7 @@ class Pincode {
     }
     
     func removeLast() {
+        guard !code.isEmpty else { return }
         code.removeLast()
     }
     
