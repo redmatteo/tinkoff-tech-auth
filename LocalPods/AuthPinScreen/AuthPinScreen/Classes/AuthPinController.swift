@@ -15,7 +15,7 @@ public enum AuthPinState {
 
 extension AuthPinController {
     public class func new() -> AuthPinController? {
-        let bundle = Bundle(for: self.classForCoder())
+        let bundle = Bundle(for: self)
         let controller = AuthPinController(nibName: "AuthPinController", bundle: bundle)
         return controller
     }

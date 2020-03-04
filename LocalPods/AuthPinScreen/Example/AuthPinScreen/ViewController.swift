@@ -19,22 +19,7 @@ class ViewController: UIViewController, AuthPinControllerDelegate {
     }
     
     func setupAuthPinController() {
-//        let bundle = Bundle(for: TestViewController.self)
-        
-//        let bundle = Bundle(for: AuthPinController.self)
-//        let controller = AuthPinController(nibName: "AuthPinController", bundle: bundle)
-        
-        let controller = AuthPinController(nibName: "AuthPinController", bundle: nil)
-        
-        //1
-//        guard let controller = bundle.loadNibNamed("TestViewController", owner: nil, options: nil)?.first as? TestViewController  else { return }
-        
-        //2
-//        let controller = TestViewController(nibName: "TestViewController", bundle: bundle)
-        
-//        guard let controller = AuthPinController.new(with: self) else { return }
-//        controller.state = .setPin
-        
+        guard let controller = AuthPinController.new() else { return }
         navigationController?.pushViewController(controller, animated: true)
     }
     
