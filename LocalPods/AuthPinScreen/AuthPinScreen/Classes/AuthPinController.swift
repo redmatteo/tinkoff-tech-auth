@@ -6,54 +6,44 @@
 //
 
 import UIKit
+import UIViewKit
 
 public enum AuthPinState {
     case setPin // set new pin
     case confirmPin(_ savedPin: String) // sign in with pin
 }
 
-@available(iOS 9.0, *)
 extension AuthPinController {
     public class func new() -> AuthPinController? {
-        let authPinBundle = Bundle(for: AuthPinController.self)
-        guard let controller = authPinBundle.loadNibNamed("AuthPinController", owner: self, options: nil)?.first as? AuthPinController else {
-            return nil
-        }
-
+        let bundle = Bundle(for: self.classForCoder())
+        let controller = AuthPinController(nibName: "AuthPinController", bundle: bundle)
         return controller
     }
 }
 
-@available(iOS 9.0, *)
 open class AuthPinController: UIViewController {
     
     //setPin
-    @IBOutlet weak var setPinStack: UIStackView?
-    @IBOutlet var enterDots: [UIImageView]?
-    //confirmPin
-    @IBOutlet weak var confirmPinStack: UIStackView?
-    @IBOutlet var confirmDots: [UIImageView]?
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var pincodeView: PincodeView!
+    
     //pin numbers
-    @IBOutlet var pinBtns: [UIButton]?
     @IBOutlet weak var errorLbl: UILabel?
-    @IBOutlet weak var signInBtn: UIButton?
     
     private var pincode: Pincode?
     private var confirmPincode: Pincode?
+    
     private var savedPin: String?
     
     public var delegate: AuthPinControllerDelegate?
     public var state: AuthPinState = .setPin {
-        didSet {
-            setupPin()
-        }
+        didSet { setupPin() }
     }
     
     // MARK: - Lifecycle
     
     override open func viewDidLoad() {
         super.viewDidLoad()
-//        setupState()
         if #available(iOS 13.0, *) {
             overrideUserInterfaceStyle = .light
         }
@@ -64,19 +54,10 @@ open class AuthPinController: UIViewController {
         setupConfirmStack()
     }
     
-    // MARK: - Private func
-    
-//    private func setupState() {
-//        guard let receivedState = delegate?.state else { return }
-//        state = receivedState
-//    }
+    // MARK: - Private
     
     private func setupPin() {
-        pincode = Pincode()
-        pincode?.didChangePin = { [weak self] colors in
-            guard let `self` = self, let dots = self.enterDots else { return }
-            self.redraw(dots, with: colors)
-        }
+        pincode = Pincode(with: 4)
         pincode?.didFinishedEnterPin = { [weak self] code in
             guard let `self` = self else { return }
             print("Pincode is: \(code)")
@@ -91,11 +72,7 @@ open class AuthPinController: UIViewController {
     }
     
     private func setupConfirmPin() {
-        confirmPincode = Pincode()
-        confirmPincode?.didChangePin = { [weak self] colors in
-            guard let `self` = self, let dots = self.confirmDots else { return }
-            self.redraw(dots, with: colors)
-        }
+        confirmPincode = Pincode(with: 4)
         confirmPincode?.didFinishedEnterPin = { code in
             print("Confirm Pincode is: \(code)")
             self.pinVerification()
@@ -112,9 +89,9 @@ open class AuthPinController: UIViewController {
     private func setupConfirmStack() {
         switch state {
         case .setPin:
-            confirmPinStack?.isHidden = false
+            titleLabel.text = "Введите PIN"
         case .confirmPin:
-            confirmPinStack?.isHidden = true
+            titleLabel.text = "Повторите PIN"
         }
     }
     
@@ -134,37 +111,38 @@ open class AuthPinController: UIViewController {
         } else if let confirmPincode = confirmPincode, !confirmPincode.isCodeFill() {
             confirmPincode.insertText("\(sender.tag)")
         }
+        pincodeView.fillNextDot(animated: true)
     }
     
     @IBAction func touchRemoveBtn(_ sender: Any) {
-        if let confirmPincode = confirmPincode, confirmPincode.hasText {
-            confirmPincode.removeText()
-        } else if let pincode = pincode, pincode.hasText {
-            pincode.removeText()
+        switch state {
+        case .setPin:
+            pincode?.removeText()
+        case .confirmPin:
+            confirmPincode?.removeText()
         }
+        pincodeView.emptyLastDot(animated: true)
     }
     
     private func pinVerification() {
         switch state {
         case .setPin:
-            guard pincode?.code == confirmPincode?.code, let newPin = pincode?.code else {
+            guard pincode?.code == confirmPincode?.code,
+                let newPin = pincode?.code else {
                 catchError(msg: "Несоответствие PIN кодов")
-                return }
+                return
+            }
             delegate?.didSetNewPin(newPin)
         case .confirmPin:
             if let pincode = pincode, pincode.isCodeFill() {
-                if let savedPin = savedPin, savedPin == pincode.code {
+                if let savedPin = savedPin,
+                    savedPin == pincode.code {
                     delegate?.didSuccessSignIn()
                 } else {
                     catchError(msg: "Неверный PIN код")
                 }
-                
             }
         }
-    }
-    
-    @IBAction func touchSkipBtn(_ sender: Any) {
-        delegate?.didTouchSkipBtn()
     }
     
 }

@@ -8,8 +8,6 @@
 import Foundation
 
 public protocol AuthPinControllerDelegate: class {
-
     func didSetNewPin(_ pin: String)
     func didSuccessSignIn()
-    func didTouchSkipBtn()
 }
