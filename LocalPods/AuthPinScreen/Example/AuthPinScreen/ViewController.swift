@@ -9,37 +9,34 @@
 import UIKit
 import AuthPinScreen
 
-class ViewController: AuthPinController, AuthPinControllerDelegate {
+class ViewController: UIViewController, AuthPinControllerDelegate {
 
     let testPin = "1111"
+    weak var controller: AuthPinController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupAuthPinController()
-        delegate = self
-//        delegate?.state = .setPin
-        delegate?.state = .confirmPin(testPin)
     }
     
     func setupAuthPinController() {
-        let authPinBundle = Bundle(for: AuthPinController.self)
-        if let authPinController = authPinBundle.loadNibNamed("AuthPinController", owner: self, options: nil)?.first as? AuthPinController {
-            navigationController?.pushViewController(authPinController, animated: true)
+        guard let controller = AuthPinController.new() else { return }
+        controller.delegate = self
+        self.controller = controller
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func didPinCodeEntered(_ pin: String) {
+        print("Entered PIN: \(pin)")
+        controller?.showSpinner()
+        Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { _ in
+            self.controller?.hideSpinner()
+            if self.testPin != pin {
+                self.controller?.sendError("Пин не верен!")
+            } else {
+                self.controller?.navigationController?.popViewController(animated: true)
+            }
         }
-    }
-    
-    //if state is setPin
-    func didSetNewPin(_ pin: String) {
-        print("Success set new PIN = \(pin)")
-    }
-    
-    //if state is confirmPin
-    func didSuccessSignIn() {
-        print("Success Sign in")
-    }
-    
-    func didTouchSkipBtn() {
-        print("Touch Skip Btn")
     }
     
 }

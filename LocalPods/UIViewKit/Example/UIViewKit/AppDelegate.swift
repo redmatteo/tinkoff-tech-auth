@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  AuthPinScreen
+//  UIViewKit
 //
-//  Created by mikhail on 02/19/2020.
-//  Copyright (c) 2020 mikhail. All rights reserved.
+//  Created by Nelmeris on 03/03/2020.
+//  Copyright (c) 2020 Nelmeris. All rights reserved.
 //
 
 import UIKit
