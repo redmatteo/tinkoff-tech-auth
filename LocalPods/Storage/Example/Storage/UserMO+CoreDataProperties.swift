@@ -16,7 +16,7 @@ extension UserMO {
         return NSFetchRequest<UserMO>(entityName: "UserMO")
     }
 
-    @NSManaged public var identifier: String?
+    @NSManaged public var id: String?
     @NSManaged public var name: String?
     @NSManaged public var username: String?
     @NSManaged public var birthday: Date?

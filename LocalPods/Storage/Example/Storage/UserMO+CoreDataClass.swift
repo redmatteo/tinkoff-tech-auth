@@ -15,7 +15,7 @@ public class UserMO: NSManagedObject {
     class func getOrCreateSingle(with id: String, from context: NSManagedObjectContext) -> UserMO? {
         let entityName = String(describing: Self.self)
         let request = NSFetchRequest<UserMO>(entityName: entityName)
-        request.predicate = NSPredicate(format: "identifier == %@", id)
+        request.predicate = NSPredicate(format: "id == %@", id)
         guard let result = try? context.fetch(request) else { return nil }
         return result.first ?? UserMO(context: context)
     }
@@ -23,7 +23,7 @@ public class UserMO: NSManagedObject {
  
 extension UserMO: ManagedObjectProtocol {
     public func toEntity() -> User? {
-        return User(id: identifier!,
+        return User(id: id!,
                      username:username,
                     name:  name,
                     birthday:  birthday as Date?)

@@ -24,7 +24,7 @@ extension User: ManagedObjectConvertible {
         guard let user = UserMO.getOrCreateSingle(with: id, from: context)
             else { return nil }
  
-        user.identifier = id
+        user.id = id
         user.username = username
         user.name = name
         user.birthday = birthday as Date?

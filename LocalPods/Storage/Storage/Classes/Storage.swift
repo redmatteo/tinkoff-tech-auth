@@ -7,11 +7,11 @@
 
 import Foundation
 
-class Storage<Entity> where Entity: ManagedObjectConvertible {
+public class Storage<Entity> where Entity: ManagedObjectConvertible {
     
-    let worker: CoreDataWorker
+    private let worker: CoreDataWorker
     
-    init(modelName: String) {
+    public init(modelName: String) {
         let stack = CoreDataStack(modelName: modelName)
         worker = CoreDataWorker(coreData: stack)
     }
