@@ -7,18 +7,23 @@
 //
 
 import UIKit
+import Network
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        let provider = Provider<TicketAPI>()
+        provider.load(.stockSymbol(exchange: "US")) { (result: NetworkResult<[Ticket]>) in
+            switch result {
+            case .success(let tickets):
+                guard let ticket = tickets.first else { return }
+                print(ticket)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+    
 }
-

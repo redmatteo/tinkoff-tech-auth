@@ -24,7 +24,7 @@ public class Provider<API: INetworkAPI>: ProviderProtocol {
     public let session: URLSession
     private var task: URLSessionTask?
     
-    init(session: URLSession = URLSession.shared) {
+    public init(session: URLSession = URLSession.shared) {
         self.session = session
     }
     
