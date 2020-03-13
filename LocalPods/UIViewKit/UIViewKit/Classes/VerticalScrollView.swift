@@ -1,32 +1,48 @@
 //
 //  VerticalScrollView.swift
-//  AuthLoginScreen
+//  Pods-UIViewKit_Example
 //
 //  Created by Artem Kufaev on 25.02.2020.
 //
 
 import Foundation
 
-@available(iOS 11.0, *)
+@IBDesignable
 open class VerticalScrollView: UIScrollView {
     
-    private(set) lazy var contentView: UIView = {
+    // MARK: - Subviews
+    
+    public private(set) lazy var contentView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
+    // MARK: - Init
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setupLayout()
+        configureUI()
     }
     
     required public init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
+        setupLayout()
+        configureUI()
     }
+    
+    // MARK: - Actions
     
     open func addContentSubview(_ view: UIView) {
         self.contentView.addSubview(view)
+    }
+    
+    // MARK: - Configure
+    
+    private func configureUI() {
+        self.bounces = true
+        self.alwaysBounceVertical = true
     }
     
     private func setupLayout() {

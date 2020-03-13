@@ -1,18 +1,15 @@
 //
-//  LoadingView.swift
-//  AuthLoginScreen
+//  SpinnerView.swift
+//  Pods-UIViewKit_Example
 //
-//  Created by Artem Kufaev on 24.02.2020.
+//  Created by Artem Kufaev on 03.03.2020.
 //
 
-import Foundation
-
-@available(iOS 11.0, *)
-class LoadingView: UIView {
+open class SpinnerView: UIView {
     
     // MARK: - Subviews
     
-    private(set) lazy var indicatorView: UIActivityIndicatorView = {
+    public private(set) lazy var indicatorView: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView()
         indicator.translatesAutoresizingMaskIntoConstraints = false
         if #available(iOS 13.0, *) {
@@ -23,7 +20,7 @@ class LoadingView: UIView {
         return indicator
     }()
     
-    private(set) lazy var blurView: UIVisualEffectView = {
+    public private(set) lazy var blurView: UIVisualEffectView = {
         let blurEffect = UIBlurEffect(style: .extraLight)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.translatesAutoresizingMaskIntoConstraints = false
@@ -34,13 +31,14 @@ class LoadingView: UIView {
     
     // MARK: - Init
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setupLayout()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    public required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setupLayout()
     }
     
     // MARK: - Configure

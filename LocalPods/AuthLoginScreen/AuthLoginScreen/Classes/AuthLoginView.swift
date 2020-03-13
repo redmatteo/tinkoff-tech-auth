@@ -5,23 +5,22 @@
 //  Created by Artem Kufaev on 23.02.2020.
 //
 
-@available(iOS 11.0, *)
+import UIViewKit
+
 public class AuthLoginView: UIView {
     
     // MARK: - Subviews
     
     private(set) lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.boldSystemFont(ofSize: 30)
         label.text = "Авторизуйтесь"
         label.numberOfLines = 0
         return label
     }()
     
-    private(set) lazy var loginField: UITextField = {
-        let field = UITextField()
-        field.translatesAutoresizingMaskIntoConstraints = false
+    private(set) lazy var loginField: TextField = {
+        let field = TextField()
         field.placeholder = "Login"
         field.textContentType = .username
         field.tag = 0
@@ -29,9 +28,8 @@ public class AuthLoginView: UIView {
         return field
     }()
     
-    private(set) lazy var passwordField: UITextField = {
-        let field = UITextField()
-        field.translatesAutoresizingMaskIntoConstraints = false
+    private(set) lazy var passwordField: TextField = {
+        let field = TextField()
         field.placeholder = "Password"
         field.isSecureTextEntry = true
         field.textContentType = .password
@@ -40,32 +38,17 @@ public class AuthLoginView: UIView {
         return field
     }()
     
-    private(set) lazy var loginButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
+    private(set) lazy var loginButton: Button = {
+        let button = Button(type: .system)
         button.setTitle("Войти", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.layer.cornerRadius = 15
-        button.setBackgroundColor(color: .systemYellow, forState: .normal)
-        button.setBackgroundColor(color: .lightGray, forState: .disabled)
+        button.isEnabled = false
         return button
     }()
     
-    private(set) lazy var isSetPinCheckbox: Checkbox = {
-        let checkbox = Checkbox()
-        checkbox.translatesAutoresizingMaskIntoConstraints = false
-        checkbox.checkmarkStyle = .tick
-        checkbox.checkedBorderColor = .systemYellow
-        checkbox.borderCornerRadius = 7
-        checkbox.uncheckedBorderColor = .lightGray
-        checkbox.checkmarkColor = .systemYellow
-        checkbox.useHapticFeedback = false
-        return checkbox
-    }()
+    private(set) lazy var isSetPinCheckbox = Checkbox()
     
     private(set) lazy var isSetPinLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Задать PIN"
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(isSetPinLabelTapped))
         label.isUserInteractionEnabled = true
@@ -73,13 +56,7 @@ public class AuthLoginView: UIView {
         return label
     }()
     
-    private(set) lazy var scrollView: VerticalScrollView = {
-        let view = VerticalScrollView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.bounces = true
-        view.alwaysBounceVertical = true
-        return view
-    }()
+    private(set) lazy var scrollView = VerticalScrollView()
     
     // MARK: - Init
     
@@ -89,7 +66,8 @@ public class AuthLoginView: UIView {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
+        setupLayout()
     }
     
     // MARK: - Actions
@@ -120,6 +98,14 @@ public class AuthLoginView: UIView {
     private func setupConstraints() {
         let padding: CGFloat = 20.0
         let safeArea = self.safeAreaLayoutGuide
+        
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        loginField.translatesAutoresizingMaskIntoConstraints = false
+        passwordField.translatesAutoresizingMaskIntoConstraints = false
+        loginButton.translatesAutoresizingMaskIntoConstraints = false
+        isSetPinCheckbox.translatesAutoresizingMaskIntoConstraints = false
+        isSetPinLabel.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: safeArea.topAnchor),
