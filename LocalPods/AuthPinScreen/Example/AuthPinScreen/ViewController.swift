@@ -12,6 +12,7 @@ import AuthPinScreen
 class ViewController: UIViewController, AuthPinControllerDelegate {
 
     let testPin = "1111"
+    weak var controller: AuthPinController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,33 +20,23 @@ class ViewController: UIViewController, AuthPinControllerDelegate {
     }
     
     func setupAuthPinController() {
-//        let bundle = Bundle(for: TestViewController.self)
-        
-//        let bundle = Bundle(for: AuthPinController.self)
-//        let controller = AuthPinController(nibName: "AuthPinController", bundle: bundle)
-        
-        let controller = AuthPinController(nibName: "AuthPinController", bundle: nil)
-        
-        //1
-//        guard let controller = bundle.loadNibNamed("TestViewController", owner: nil, options: nil)?.first as? TestViewController  else { return }
-        
-        //2
-//        let controller = TestViewController(nibName: "TestViewController", bundle: bundle)
-        
-//        guard let controller = AuthPinController.new(with: self) else { return }
-//        controller.state = .setPin
-        
+        guard let controller = AuthPinController.new() else { return }
+        controller.delegate = self
+        self.controller = controller
         navigationController?.pushViewController(controller, animated: true)
     }
     
-    //if state is setPin
-    func didSetNewPin(_ pin: String) {
-        print("Success set new PIN = \(pin)")
-    }
-    
-    //if state is confirmPin
-    func didSuccessSignIn() {
-        print("Success Sign in")
+    func didPinCodeEntered(_ pin: String) {
+        print("Entered PIN: \(pin)")
+        controller?.showSpinner()
+        Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { _ in
+            self.controller?.hideSpinner()
+            if self.testPin != pin {
+                self.controller?.sendError("Пин не верен!")
+            } else {
+                self.controller?.navigationController?.popViewController(animated: true)
+            }
+        }
     }
     
 }

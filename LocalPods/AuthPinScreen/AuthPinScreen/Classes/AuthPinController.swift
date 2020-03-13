@@ -10,34 +10,44 @@ import UIViewKit
 
 public enum AuthPinState {
     case setPin // set new pin
-    case confirmPin(_ savedPin: String) // sign in with pin
+    case confirmPin // sign in with pin
 }
 
 extension AuthPinController {
     public class func new() -> AuthPinController? {
-        let bundle = Bundle(for: self.classForCoder())
+        let bundle = Bundle(for: self)
         let controller = AuthPinController(nibName: "AuthPinController", bundle: bundle)
         return controller
     }
 }
 
-open class AuthPinController: UIViewController {
+open class AuthPinController: LoadingViewController {
     
-    //setPin
+    // MARK: - Outlets
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var pincodeView: PincodeView!
     
-    //pin numbers
     @IBOutlet weak var errorLbl: UILabel?
     
     private var pincode: Pincode?
     private var confirmPincode: Pincode?
-    
-    private var savedPin: String?
+    private var activePincode: Pincode? {
+        guard let pincode = pincode else { return nil }
+        switch state {
+        case .confirmPin:
+            return pincode
+        case .setPin:
+            return pincode.isCodeFill() ? confirmPincode : pincode
+        }
+    }
     
     public var delegate: AuthPinControllerDelegate?
     public var state: AuthPinState = .setPin {
-        didSet { setupPin() }
+        didSet { reset() }
+    }
+    
+    public var pincodeSize: Int = 4 {
+        didSet { configurePin() }
     }
     
     // MARK: - Lifecycle
@@ -47,80 +57,65 @@ open class AuthPinController: UIViewController {
         if #available(iOS 13.0, *) {
             overrideUserInterfaceStyle = .light
         }
+        configurePin()
     }
     
     override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setupConfirmStack()
+        reset()
+    }
+    
+    // MARK: - Public
+    
+    public func sendError(_ msg: String) {
+        catchError(msg: msg)
     }
     
     // MARK: - Private
     
-    private func setupPin() {
-        pincode = Pincode(with: 4)
-        pincode?.didFinishedEnterPin = { [weak self] code in
-            guard let `self` = self else { return }
-            print("Pincode is: \(code)")
-            switch self.state {
-            case .confirmPin(let savedPin):
-                self.savedPin = savedPin
+    private func configurePin() {
+        pincode = Pincode(with: pincodeSize)
+        pincodeView.dotCount = pincodeSize
+        pincode?.didFinishedEnterPin = { code in
+            self.pinVerification()
+        }
+        if state == .setPin {
+            pincode?.didFinishedEnterPin = { code in
+                self.titleLabel.text = "Повторите PIN"
+                self.pincodeView.emptyAllDots(animated: true)
+            }
+            confirmPincode = Pincode(with: pincodeSize)
+            confirmPincode?.didFinishedEnterPin = { code in
                 self.pinVerification()
-            case .setPin:
-                self.setupConfirmPin()
             }
         }
     }
     
-    private func setupConfirmPin() {
-        confirmPincode = Pincode(with: 4)
-        confirmPincode?.didFinishedEnterPin = { code in
-            print("Confirm Pincode is: \(code)")
-            self.pinVerification()
-        }
-    }
-    
-    private func redraw(_ dots: [UIImageView], with colors: [UIColor]) {
-        guard colors.count == dots.count else { return }
-        dots.enumerated().forEach({ (index, element) in
-            element.tintColor = colors[index]
-        })
-    }
-    
-    private func setupConfirmStack() {
-        switch state {
-        case .setPin:
-            titleLabel.text = "Введите PIN"
-        case .confirmPin:
-            titleLabel.text = "Повторите PIN"
-        }
+    private func reset() {
+        titleLabel.text = "Введите PIN"
+        pincode?.clear()
+        confirmPincode?.clear()
+        pincodeView.emptyAllDots(animated: true)
     }
     
     private func catchError(msg: String) {
         errorLbl?.text = msg
         errorLbl?.isHidden = false
-        pincode?.removeAllText()
-        confirmPincode?.removeAllText()
+        reset()
     }
     
     // MARK: - Actions
     
     @IBAction func touchNumberBtn(_ sender: UIButton) {
         errorLbl?.isHidden = true
-        if let pincode = pincode, !pincode.isCodeFill() {
-            pincode.insertText("\(sender.tag)")
-        } else if let confirmPincode = confirmPincode, !confirmPincode.isCodeFill() {
-            confirmPincode.insertText("\(sender.tag)")
-        }
+        guard let char = String(sender.tag).first else { return }
         pincodeView.fillNextDot(animated: true)
+        activePincode?.insert(char)
     }
     
     @IBAction func touchRemoveBtn(_ sender: Any) {
-        switch state {
-        case .setPin:
-            pincode?.removeText()
-        case .confirmPin:
-            confirmPincode?.removeText()
-        }
+        errorLbl?.isHidden = true
+        activePincode?.removeLast()
         pincodeView.emptyLastDot(animated: true)
     }
     
@@ -132,16 +127,10 @@ open class AuthPinController: UIViewController {
                 catchError(msg: "Несоответствие PIN кодов")
                 return
             }
-            delegate?.didSetNewPin(newPin)
+            delegate?.didPinCodeEntered(newPin)
         case .confirmPin:
-            if let pincode = pincode, pincode.isCodeFill() {
-                if let savedPin = savedPin,
-                    savedPin == pincode.code {
-                    delegate?.didSuccessSignIn()
-                } else {
-                    catchError(msg: "Неверный PIN код")
-                }
-            }
+            guard let code = pincode?.code else { return }
+            delegate?.didPinCodeEntered(code)
         }
     }
     

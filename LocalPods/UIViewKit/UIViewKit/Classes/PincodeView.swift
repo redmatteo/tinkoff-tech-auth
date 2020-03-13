@@ -105,6 +105,7 @@ extension PincodeView {
             }) { _ in completion?() }
         } else {
             dot.backgroundColor = color
+            completion?()
         }
     }
     
@@ -127,10 +128,10 @@ extension PincodeView {
     
     public func emptyAllDots(animated: Bool = false) {
         guard let dot = filledDots.popLast() else { return }
+        emptyDots.append(dot)
         recolorDot(dot, color: emptyDotColor, animated: animated, duration: 0.05) {
             self.emptyAllDots(animated: animated)
         }
-        emptyDots.append(dot)
     }
     
 }
