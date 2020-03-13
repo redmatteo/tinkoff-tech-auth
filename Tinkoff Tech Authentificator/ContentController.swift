@@ -21,19 +21,3 @@ class ContentController: UIViewController {
         root.dismissContent()
     }
 }
-
-class AuthPin: AuthPinController {
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupAuthPinController()
-    }
-    
-    func setupAuthPinController() {
-        let authPinBundle = Bundle(for: AuthPinController.self)
-        if let authPinController = authPinBundle.loadNibNamed("AuthPinController", owner: self, options: nil)?.first as? AuthPinController {
-            navigationController?.pushViewController(authPinController, animated: false)
-        }
-    }
-    
-}

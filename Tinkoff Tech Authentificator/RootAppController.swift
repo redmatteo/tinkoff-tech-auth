@@ -15,6 +15,8 @@ private typealias Credentials = (login: String, password: String)
 
 class RootAppController: UINavigationController {
     private lazy var auth = AuthManager()
+    private var pinCode: String?
+    private var authPin: AuthPinController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +29,8 @@ class RootAppController: UINavigationController {
             case .credentials:
                 self?.runLogin()
             case .confirmPin(let code):
-                self?.runConfirmPin(code)
+                self?.pinCode = code
+                self?.runConfirmPin()
             }
         }
     }
@@ -38,19 +41,23 @@ class RootAppController: UINavigationController {
         setViewControllers([login], animated: true)
     }
     
-    private func runConfirmPin(_ code: String) {
-        let pin = AuthPin()
+    private func runConfirmPin() {
+        guard let pin = AuthPinController.new() else { fatalError() }
+        pin.pincodeSize = 5
+        self.authPin = pin
         pin.delegate = self
-        pin.state = .confirmPin(code)
+        pin.state = .confirmPin
         setViewControllers([pin], animated: true)
     }
     
     private func runSetPinIfNeeded(_ needPin: Bool) {
+        guard let authPin = AuthPinController.new() else { fatalError() }
+        self.authPin = authPin
+        authPin.pincodeSize = 5
         guard needPin else {
             runContent()
             return
         }
-        let authPin = AuthPin()
         authPin.delegate = self
         authPin.state = .setPin
         setViewControllers([authPin], animated: false)
@@ -80,36 +87,28 @@ extension RootAppController: AuthLoginViewControllerDelegate {
     func loginButtonDidClicked(login: String, password: String, isSetPin: Bool) {
         sendCredentials((login, password))
         guard let login = viewControllers.first as? AuthLoginViewController else { return }
-        login.openLoadingView()
+        login.showSpinner()
         DispatchQueue.main.asyncAfter(deadline: .now()+0.4) { [weak self] in
-            login.closeLoadingView()
+            login.hideSpinner()
             self?.runSetPinIfNeeded(isSetPin)
         }
     }
 }
 
 extension RootAppController: AuthPinControllerDelegate {
-    var state: AuthPinState {
-        get {
-            .setPin
+    func didPinCodeEntered(_ pin: String) {
+        authPin?.showSpinner()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) { [weak self] in
+            self?.authPin?.hideSpinner()
+            if let pinCode = self?.pinCode {
+                guard pinCode == pin else {
+                    self?.authPin?.sendError("Неверный PIN")
+                    return
+                }
+            } else {
+                self?.sendNewPin(pin)
+            }
+            self?.runContent()
         }
-        set(newValue) {
-            
-        }
-    }
-    
-    func didSetNewPin(_ pin: String) {
-        guard let code = Int(pin) else { return }
-        
-        sendNewPin(pin)
-        runContent()
-    }
-    
-    func didSuccessSignIn() {
-        runContent()
-    }
-    
-    func didTouchSkipBtn() {
-        runContent()
     }
 }

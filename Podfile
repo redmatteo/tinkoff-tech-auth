@@ -12,4 +12,6 @@ target 'Tinkoff Tech Authentificator' do
   pod 'AuthLoginScreen', :path => 'LocalPods/AuthLoginScreen'
   pod 'AuthPinScreen', :path => 'LocalPods/AuthPinScreen'
   pod 'UIViewKit', :path => 'LocalPods/UIViewKit'
+  pod 'Storage', :path => 'LocalPods/Storage'
+  pod 'Network', :path => 'LocalPods/Network'
 end
