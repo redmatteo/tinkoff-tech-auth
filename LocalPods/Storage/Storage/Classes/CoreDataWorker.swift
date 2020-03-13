@@ -15,10 +15,24 @@ public protocol CoreDataWorkerProtocol {
          completion: @escaping (Result<[Entity], CoreDataWorkerError>) -> Void)
 }
 
-public enum CoreDataWorkerError: Error {
-    case cannotFetch(String)
-    case cannotSave(String)
-    case cannotConvertion(String)
+public enum CoreDataWorkerError: Error, LocalizedError {
+    case cannotFetch(Error)
+    case cannotSave(Error)
+    case cannotConvertion
+    case cannotDelete(Error)
+    
+    public var localizedDescription: String {
+        switch self {
+        case .cannotFetch(let error):
+            return "Cannot fetch error: \(error))"
+        case .cannotConvertion:
+            return "Cannot convert object"
+        case .cannotDelete(let error):
+            return "Cannot delete object error: \(error)"
+        case .cannotSave(let error):
+            return "Cannot save object error: \(error)"
+        }
+    }
 }
  
 public class CoreDataWorker: CoreDataWorkerProtocol {
@@ -45,42 +59,78 @@ public class CoreDataWorker: CoreDataWorkerProtocol {
                 let items: [Entity] = results?.compactMap { $0.toEntity() as? Entity } ?? []
                 completion(.success(items))
             } catch {
-                let fetchError = CoreDataWorkerError.cannotFetch("Cannot fetch error: \(error))")
+                let fetchError = CoreDataWorkerError.cannotFetch(error)
                 completion(.failure(fetchError))
             }
+        }
+    }
+    
+    private func upsertProccess<Entity: ManagedObjectConvertible>
+        (_ entity: Entity,
+        in context: NSManagedObjectContext,
+        completion: @escaping (CoreDataWorkerError?) -> Void) {
+        guard entity.toManagedObject(in: context) != nil else {
+            completion(.cannotConvertion)
+            return
+        }
+        do {
+            try context.save()
+            completion(nil)
+        } catch {
+            completion(.cannotSave(error))
         }
     }
     
     public func upsert<Entity: ManagedObjectConvertible>
         (_ entity: Entity,
          completion: @escaping (CoreDataWorkerError?) -> Void) {
-        coreData.performForegroundTask { context in
-            guard entity.toManagedObject(in: context) != nil else {
-                let error = CoreDataWorkerError.cannotConvertion("Cannot convert object")
-                completion(error)
-                return
+        coreData.performBackgroundTask { context in
+            self.upsertProccess(entity, in: context, completion: completion)
+        }
+    }
+    
+    public func upsert<Entity: ManagedObjectConvertible>
+        (_ entities: [Entity],
+         completion: @escaping (CoreDataWorkerError?) -> Void) {
+        coreData.performBackgroundTask { context in
+            entities.forEach {
+                self.upsertProccess($0, in: context, completion: completion)
             }
-            do {
-                try context.save()
-                completion(nil)
-            } catch {
-                let error = CoreDataWorkerError.cannotSave("Cannot save object error: \(error)")
-                completion(error)
-            }
+        }
+    }
+    
+    private func removeProccess<Entity: ManagedObjectConvertible>
+        (_ entity: Entity,
+         in context: NSManagedObjectContext,
+         completion: @escaping (CoreDataWorkerError?) -> Void) {
+        guard let object = entity.toManagedObject(in: context) else {
+            completion(.cannotConvertion)
+            return
+        }
+        context.delete(object)
+        do {
+            try context.save()
+            completion(nil)
+        } catch {
+            completion(.cannotDelete(error))
         }
     }
     
     public func remove<Entity: ManagedObjectConvertible>
         (_ entity: Entity,
          completion: @escaping (CoreDataWorkerError?) -> Void) {
-        coreData.performForegroundTask { context in
-            guard let object = entity.toManagedObject(in: context) else {
-                completion(.cannotConvertion("Cannot convert object"))
-                return
-            }
-            context.delete(object)
-            completion(nil)
+        coreData.performBackgroundTask { context in
+            self.removeProccess(entity, in: context, completion: completion)
         }
     }
     
+    public func remove<Entity: ManagedObjectConvertible>
+        (_ entities: [Entity],
+         completion: @escaping (CoreDataWorkerError?) -> Void) {
+         coreData.performBackgroundTask { context in
+            entities.forEach {
+                self.removeProccess($0, in: context, completion: completion)
+            }
+         }
+    }
 }
