@@ -43,11 +43,11 @@ open class AuthPinController: LoadingViewController {
     
     public var delegate: AuthPinControllerDelegate?
     public var state: AuthPinState = .setPin {
-        didSet { reset() }
+        didSet { if self.isViewLoaded { reset() } }
     }
     
     public var pincodeSize: Int = 4 {
-        didSet { configurePin() }
+        didSet { if self.isViewLoaded { configurePin() } }
     }
     
     // MARK: - Lifecycle
