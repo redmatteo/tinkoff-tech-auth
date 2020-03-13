@@ -5,11 +5,11 @@
 //  Created by Artem Kufaev on 04.03.2020.
 //
 
-public class TableViewAdapter<Model, Cell: UITableViewCell>:
+public class TableViewAdapter<Cell: UITableViewCell & ConfigurableCell>:
     NSObject,
     UITableViewDelegate,
-    UITableViewDataSource
-    where Cell: ConfigurableCell, Model == Cell.T {
+    UITableViewDataSource {
+    public typealias Model = Cell.ViewModel
     
     private(set) weak var tableView: UITableView!
     private(set) var viewModels: [Model] = [] {

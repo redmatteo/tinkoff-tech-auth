@@ -6,7 +6,7 @@
 //
 
 public protocol ConfigurableCell: ReusableCell {
-    associatedtype T
+    associatedtype ViewModel
 
-    func configure(_ viewModel: T, at indexPath: IndexPath)
+    func configure(_ viewModel: ViewModel, at indexPath: IndexPath)
 }
