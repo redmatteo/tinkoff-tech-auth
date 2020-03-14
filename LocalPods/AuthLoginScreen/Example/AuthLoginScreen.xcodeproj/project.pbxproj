@@ -7,18 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E079C7CD0F30B2E96ADBD11 /* Pods_AuthLoginScreen_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD679050A6CE07854B9EC936 /* Pods_AuthLoginScreen_Example.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		A4993791B31E6105D8C546C0 /* libPods-AuthLoginScreen_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EC4BC2E79C5CDCC079ED65D /* libPods-AuthLoginScreen_Example.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1153315CE8EA1E763D782ACB /* AuthLoginScreen.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = AuthLoginScreen.podspec; path = ../AuthLoginScreen.podspec; sourceTree = "<group>"; };
 		25A266F1AD53FDE11FB8D78F /* Pods-AuthLoginScreen_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AuthLoginScreen_Tests.debug.xcconfig"; path = "Target Support Files/Pods-AuthLoginScreen_Tests/Pods-AuthLoginScreen_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		4EC4BC2E79C5CDCC079ED65D /* libPods-AuthLoginScreen_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AuthLoginScreen_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* AuthLoginScreen_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AuthLoginScreen_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -29,6 +28,7 @@
 		62369335767B87B8A3A2D97D /* Pods-AuthLoginScreen_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AuthLoginScreen_Example.debug.xcconfig"; path = "Target Support Files/Pods-AuthLoginScreen_Example/Pods-AuthLoginScreen_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		6F5874E59FF4E06EB79CE8EF /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		A1BA4C4A45F46EEE6D790F92 /* Pods-AuthLoginScreen_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AuthLoginScreen_Tests.release.xcconfig"; path = "Target Support Files/Pods-AuthLoginScreen_Tests/Pods-AuthLoginScreen_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		AD679050A6CE07854B9EC936 /* Pods_AuthLoginScreen_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AuthLoginScreen_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B17483DCF245AED17A6387F9 /* libPods-AuthLoginScreen_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AuthLoginScreen_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCA5B8FEA386E52621A5E66F /* Pods-AuthLoginScreen_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AuthLoginScreen_Example.release.xcconfig"; path = "Target Support Files/Pods-AuthLoginScreen_Example/Pods-AuthLoginScreen_Example.release.xcconfig"; sourceTree = "<group>"; };
 		F73D5645C250B42CE640000B /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -39,7 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A4993791B31E6105D8C546C0 /* libPods-AuthLoginScreen_Example.a in Frameworks */,
+				2E079C7CD0F30B2E96ADBD11 /* Pods_AuthLoginScreen_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,8 +60,8 @@
 		329D637DAAE3E55C08EE2894 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4EC4BC2E79C5CDCC079ED65D /* libPods-AuthLoginScreen_Example.a */,
 				B17483DCF245AED17A6387F9 /* libPods-AuthLoginScreen_Tests.a */,
+				AD679050A6CE07854B9EC936 /* Pods_AuthLoginScreen_Example.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -128,6 +128,7 @@
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
+				A110E74D5385D94F3B8A6013 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -145,7 +146,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
@@ -157,10 +158,9 @@
 			};
 			buildConfigurationList = 607FACCB1AFB9204008FA782 /* Build configuration list for PBXProject "AuthLoginScreen" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 			);
@@ -210,6 +210,30 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A110E74D5385D94F3B8A6013 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AuthLoginScreen_Example/Pods-AuthLoginScreen_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AuthLoginScreen/AuthLoginScreen.framework",
+				"${BUILT_PRODUCTS_DIR}/DesignKit/DesignKit.framework",
+				"${BUILT_PRODUCTS_DIR}/UIUtils/UIUtils.framework",
+				"${BUILT_PRODUCTS_DIR}/Validator/Validator.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AuthLoginScreen.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DesignKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIUtils.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Validator.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AuthLoginScreen_Example/Pods-AuthLoginScreen_Example-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -248,6 +272,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -256,12 +281,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -301,6 +328,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -309,12 +337,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

@@ -66,6 +66,7 @@ open class PincodeView: UIStackView {
         emptyDots.removeAll()
         filledDots.forEach { $0.removeFromSuperview() }
         filledDots.removeAll()
+        guard dotCount >= 1 else { return }
         for _ in 1...dotCount {
             let dot = Dot()
             self.addArrangedSubview(dot)

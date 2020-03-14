@@ -5,6 +5,8 @@
 //  Created by Artem Kufaev on 03.03.2020.
 //
 
+import UIUtils
+
 @IBDesignable
 open class Button: UIButton {
     

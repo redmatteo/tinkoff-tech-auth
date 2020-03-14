@@ -5,8 +5,6 @@
 //  Created by Artem Kufaev on 23.02.2020.
 //
 
-import Foundation
-
 @IBDesignable
 extension UIButton {
     
