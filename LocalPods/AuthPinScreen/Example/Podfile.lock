@@ -1,22 +1,28 @@
 PODS:
   - AuthPinScreen (0.1.0):
-    - UIViewKit
-  - UIViewKit (0.1.0)
+    - DesignKit
+    - UIUtils
+  - DesignKit (0.1.0)
+  - UIUtils (0.1.0)
 
 DEPENDENCIES:
   - AuthPinScreen (from `../`)
-  - UIViewKit (from `../../UIViewKit`)
+  - DesignKit (from `../../DesignKit`)
+  - UIUtils (from `../../UIUtils`)
 
 EXTERNAL SOURCES:
   AuthPinScreen:
     :path: "../"
-  UIViewKit:
-    :path: "../../UIViewKit"
+  DesignKit:
+    :path: "../../DesignKit"
+  UIUtils:
+    :path: "../../UIUtils"
 
 SPEC CHECKSUMS:
-  AuthPinScreen: 5875b252c874e2bf43089e42f13cc93d87e43662
-  UIViewKit: 8d8b12b203a9c4d13c1d060abb3f323a0ed626a5
+  AuthPinScreen: 246efd2ea7385d6874c4c854fbb0ed3da13e618a
+  DesignKit: e849bed58124ef73b90b74e2756202b209bf2512
+  UIUtils: d8a80c165e76b48b92192c5c5338a759c5ccfbb3
 
-PODFILE CHECKSUM: a0fe1eb7cdad5647f634f6730a137d6bff806c2c
+PODFILE CHECKSUM: 449cb69a6bb33d1c81e0c7c8d8b00fcf30277526
 
 COCOAPODS: 1.9.0

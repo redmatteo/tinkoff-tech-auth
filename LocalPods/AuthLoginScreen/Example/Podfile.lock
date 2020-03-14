@@ -1,13 +1,16 @@
 PODS:
   - AuthLoginScreen (0.1.0):
-    - UIViewKit
+    - DesignKit
+    - UIUtils
     - Validator
-  - UIViewKit (0.1.0)
+  - DesignKit (0.1.0)
+  - UIUtils (0.1.0)
   - Validator (3.2.1)
 
 DEPENDENCIES:
   - AuthLoginScreen (from `../`)
-  - UIViewKit (from `../../UIViewKit`)
+  - DesignKit (from `../../DesignKit`)
+  - UIUtils (from `../../UIUtils`)
 
 SPEC REPOS:
   trunk:
@@ -16,14 +19,17 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   AuthLoginScreen:
     :path: "../"
-  UIViewKit:
-    :path: "../../UIViewKit"
+  DesignKit:
+    :path: "../../DesignKit"
+  UIUtils:
+    :path: "../../UIUtils"
 
 SPEC CHECKSUMS:
-  AuthLoginScreen: d20e1e5934e68d832915fa65a0df4d41467a4966
-  UIViewKit: 8d8b12b203a9c4d13c1d060abb3f323a0ed626a5
+  AuthLoginScreen: ec43dbbe3b8ae740e5ef9e0d1f3522baaf083300
+  DesignKit: e849bed58124ef73b90b74e2756202b209bf2512
+  UIUtils: d8a80c165e76b48b92192c5c5338a759c5ccfbb3
   Validator: 80a6f567220c962dfd2d9928ae98a8c1d164f6f4
 
-PODFILE CHECKSUM: 082f3168994b0965a8c0768d46ac8dd33b304668
+PODFILE CHECKSUM: a9c98e2a76260f3cdfceb5fe395d58b29fec898a
 
 COCOAPODS: 1.9.0

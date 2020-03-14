@@ -1,6 +1,0 @@
-use_frameworks!
-
-target 'DisignKit_Example' do
-  pod 'DisignKit', :path => '../'
-
-end

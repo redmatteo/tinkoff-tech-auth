@@ -1,0 +1,6 @@
+use_frameworks!
+
+target 'DesignKit_Example' do
+  pod 'DesignKit', :path => '../'
+
+end
