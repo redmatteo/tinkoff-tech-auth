@@ -1,0 +1,6 @@
+use_frameworks!
+
+target 'UIUtils_Example' do
+  pod 'UIUtils', :path => '../'
+
+end

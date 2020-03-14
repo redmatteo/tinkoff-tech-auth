@@ -1,0 +1,16 @@
+PODS:
+  - UIUtils (0.1.0)
+
+DEPENDENCIES:
+  - UIUtils (from `../`)
+
+EXTERNAL SOURCES:
+  UIUtils:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  UIUtils: d8a80c165e76b48b92192c5c5338a759c5ccfbb3
+
+PODFILE CHECKSUM: 935ecc01bddbb1f1933533b2f3da469a500ad8c6
+
+COCOAPODS: 1.9.0
